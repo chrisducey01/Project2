@@ -22,7 +22,7 @@ module.exports = function(sequelize, DataTypes) {
       }
     }
   });
-  
+
   User.associate = function(models) {
     // We're saying that a User should belong to an Family
     // A User can't be created without an Family due to the foreign key constraint
@@ -32,6 +32,6 @@ module.exports = function(sequelize, DataTypes) {
       }
     });
   };
-  
+
   return User;
 };
