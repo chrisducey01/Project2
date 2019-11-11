@@ -1,5 +1,12 @@
 body {
-    background-color: white;
+    background-color: #7d5fff;
+}
+
+
+/* --------- Navbar Style ------------ */
+
+.navbar.navbar-expand-lg.navbar-dark.bg-dark {
+    background-color: #7d5fff;
 }
 
 .header-row {
@@ -10,13 +17,23 @@ body {
     height: 50vh;
 }
 
+
+/* --------- Form Style ------------ */
+
+.a {
+    color: white;
+}
+
+
+/* --------- Footer Style ------------ */
+
 .footer {
     position: fixed;
     left: 0;
     bottom: 0;
     width: 100%;
     height: 20px;
-    background-color: #7d5fff;
+    background-color: #624aca;
     color: white;
     text-align: center;
 }
