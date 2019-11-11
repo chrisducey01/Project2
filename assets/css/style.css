@@ -2,6 +2,10 @@ body {
     background-color: #7d5fff;
 }
 
+.container {
+    height: 100vh;
+}
+
 
 /* --------- Navbar Style ------------ */
 
@@ -9,9 +13,8 @@ body {
     background-color: #7d5fff;
 }
 
-.header-row {
-    font-family: 'McLaren', cursive;
-}
+
+/* ---------Logo Style ------------ */
 
 #section-logo {
     height: 50vh;
@@ -20,20 +23,36 @@ body {
 
 /* --------- Form Style ------------ */
 
-.a {
+.col-md-6.col-md-offset-3 {
+    font-family: 'McLaren';
+}
+
+.btn.btn-default {
+    background: #ffaf40;
     color: white;
+    box-shadow: 0 8px 6px -6px black;
+    position: relative;
+    left: 40%;
+    font-family: 'McLaren';
+}
+
+.btn.btn-default:hover {
+    background-color: #a29bfe;
+    box-shadow: 0 8px 6px -6px black;
+    text-decoration: none;
 }
 
 
-/* --------- Footer Style ------------ */
+}
 
-.footer {
+/* --------- Footer Style ------------ */
+.row.justify-content-center.row-ion {
     position: fixed;
     left: 0;
     bottom: 0;
     width: 100%;
     height: 20px;
-    background-color: #624aca;
+    background-color: #3b2d7a;
     color: white;
     text-align: center;
 }
