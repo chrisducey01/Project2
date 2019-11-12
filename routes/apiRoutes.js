@@ -40,9 +40,23 @@ module.exports = function (app) {
           FamilyId: family.id
         }).
           then(function (user) {
-            res.json({id: user.id});
+            res.json({ id: user.id });
           });
       });
+  });
+
+  // Login an existing user
+  app.post("/api/login", passport.authenticate("local"), function (req, res) {
+    res.json(req.user);
+  });
+
+  // Route for logging user out
+  app.get("/api/logout", function (req, res) {
+    if (!req.user) {
+      return res.status(401).end();
+    }
+    req.logout();
+    res.status(200).end();
   });
 
   // Delete an example by id
