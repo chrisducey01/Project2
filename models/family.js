@@ -2,7 +2,8 @@ module.exports = function(sequelize, DataTypes) {
   var Family = sequelize.define("Family", {
     name: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
+      validate: { len: [1, 255] }
     }
   });
 
