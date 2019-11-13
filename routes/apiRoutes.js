@@ -51,9 +51,14 @@ module.exports = function(app) {
     });
   });
 
-  // Login an existing user
+  // Login an existing user and differentiate if it is a parent or a kid
   app.post("/api/login", passport.authenticate("local"), function(req, res) {
     res.json(req.user);
+    if (req.user.role === "Parent") {
+      res.redirect(307, "/api/parents");
+    } else {
+      res.redirect(307, "/api/kids");
+    }
   });
 
   // Route for logging user out
