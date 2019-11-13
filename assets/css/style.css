@@ -1,6 +1,7 @@
-body {
-    background-color: #7d5fff;
-}
+/* --------- homepage Style ------------ */
+
+
+/* --------------------------------------*/
 
 .container {
     height: 100vh;
@@ -43,9 +44,8 @@ body {
 }
 
 
-}
-
 /* --------- Footer Style ------------ */
+
 .row.justify-content-center.row-ion {
     position: fixed;
     left: 0;
@@ -55,4 +55,54 @@ body {
     background-color: #3b2d7a;
     color: white;
     text-align: center;
+}
+
+
+/* --------- kidspage Style ------------ */
+
+
+/* --------------------------------------*/
+
+.container-fluid {
+    height: 100vh;
+    overflow: hidden;
+    margin: auto;
+    font-family: 'Livvic', sans-serif, Arial, Helvetica, sans-serif;
+    background-image: url(../images/mountains.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.row {
+    height: 60px;
+}
+
+.col1 {
+    background-color: #cd6133;
+    height: 60px;
+}
+
+.col2 {
+    background-color: #cd6133;
+}
+
+.col3 {
+    background-color: #cd6133;
+    height: 60px;
+}
+
+.col4 {
+    background-color: #cd6133;
+}
+
+.col5 {
+    background-color: #cd6133;
+}
+
+.col6 {
+    background-color: #cd6133;
+}
+
+#chore {
+    background-color: white;
 }
