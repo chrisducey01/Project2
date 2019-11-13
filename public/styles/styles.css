@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .list-group-item {
     line-height: 2.5;
 }
@@ -94,3 +95,24 @@
     margin: 3px;
     min-height: 60px;
 }
+=======
+
+/* styling for login/signup page */
+
+h4{
+  margin-left: 25%;
+  font-family: 'Fredericka the Great', cursive;
+  font-size: 40px;
+  color: purple;
+}
+h1{
+  align-content: center;
+  font-size: 120px;
+  font-family: 'Fredericka the Great', cursive;
+  color: red;
+
+
+};
+
+
+>>>>>>> f200c3a2fadf82f39f2ed13286a5e4f72344b53b
