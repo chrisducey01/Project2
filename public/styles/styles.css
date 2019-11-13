@@ -75,40 +75,22 @@
     background-repeat: no-repeat;
 }
 
-.container {
-    background-color: #ffda79;
-}
-
-.row {
-    height: 60px;
-}
-
 .col1 {
     background-color: #cd6133;
     height: 60px;
 }
 
-.col2 {
-    background-color: #cd6133;
+.top {
+    background-color: #cd6133
 }
 
-.col3 {
-    background-color: #cd6133;
-    height: 60px;
+.col-sm-2 {
+    background-color: #fad390;
 }
 
-.col4 {
-    background-color: #cd6133;
-}
-
-.col5 {
-    background-color: #cd6133;
-}
-
-.col6 {
-    background-color: #cd6133;
-}
-
-#chore1 {
-    background-color: white;
+#chore {
+    background-color: #fad390;
+    text-align: center;
+    margin: 3px;
+    min-height: 60px;
 }
