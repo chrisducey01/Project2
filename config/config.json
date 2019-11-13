@@ -2,7 +2,7 @@
   "development": {
     "username": "root",
     "password": "root",
-    "database": "exampledb",
+    "database": "chrackerdb",
     "host": "localhost",
     "dialect": "mysql"
   },
