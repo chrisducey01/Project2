@@ -50,6 +50,7 @@ module.exports = function(app) {
           res.json({ id: user.id });
         })
         .catch(function(err) {
+          console.log(err);
           res.status(400).json({ message: "User already exists." });
         });
     });
