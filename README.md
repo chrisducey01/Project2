@@ -33,4 +33,4 @@ Our mission is to work with parents who care about their kids development. Our a
 ## Benefits
  * Parent: The benefits the parent will receive from using this app will definetly aid to keep track of their childern's chores without forgetting if a chore wasn't completed as well as making sure that good behavior gets rewarded.
 
- * Kids: The kids who use this application will learn to be more organized by keeping track of their daily chores as well as making sure their points are being tracked. (CH)RACKER will not only be benefit the kids now, but it will help the child to become independent and create good organizational skills and habits.  
+ * Kids: This app will help kids keep track of the chores they complete and the points they need to accumulate for certain prize.  (CH)RACKER will not only be benefit the kids now, but it will help the child to become independent and create good organizational skills and habits.  
