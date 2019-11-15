@@ -157,10 +157,35 @@ module.exports = function(app) {
   });
 
   // POST route for saving a new reward
+  // Register a new chore
   app.post("/api/reward", function(req, res) {
-    db.Reward.create(req.body).then(function(dbPost) {
-      res.json(dbPost);
-    });
+    name = req.body.name;
+    points = req.body.points;
+    FamilyId = req.body.FamilyId;
+
+    if (!name) {
+      return res
+        .status(400)
+        .json({ message: "name not passed in on request." });
+    }
+    if (!points) {
+      return res
+        .status(400)
+        .json({ message: "points not passed in on request." });
+    }
+    //Then create the new reward
+    db.Reward.create({
+      name: name,
+      points: points,
+      FamilyId: FamilyId
+    })
+      .then(function(name) {
+        res.json({ id: name.id });
+      })
+      .catch(function(err) {
+        console.log(err);
+        res.status(400).json({ message: "Reward already exists." });
+      });
   });
 
   // Delete an example by id
