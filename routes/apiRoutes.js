@@ -45,19 +45,23 @@ module.exports = function(app) {
         password: password,
         role: role,
         FamilyId: family.id
-      }).then(function(user) {
-        res.json({ id: user.id });
-      });
+      })
+        .then(function(user) {
+          res.json({ id: user.id });
+        })
+        .catch(function(err) {
+          console.log(err);
+          res.status(400).json({ message: "User already exists." });
+        });
     });
   });
 
   // Login an existing user and differentiate if it is a parent or a kid
   app.post("/api/login", passport.authenticate("local"), function(req, res) {
-    res.json(req.user);
     if (req.user.role === "Parent") {
-      res.redirect(307, "/api/parents");
+      res.redirect(307, "/parents");
     } else {
-      res.redirect(307, "/api/kids");
+      res.redirect(307, "/kids");
     }
   });
 
