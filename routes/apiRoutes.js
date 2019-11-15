@@ -45,15 +45,68 @@ module.exports = function(app) {
         password: password,
         role: role,
         FamilyId: family.id
-      }).then(function(user) {
-        res.json({ id: user.id });
-      });
+      })
+        .then(function(user) {
+          res.json({ id: user.id });
+        })
+        .catch(function(err) {
+          console.log(err);
+          res.status(400).json({ message: "User already exists." });
+        });
     });
   });
 
-  // Login an existing user
+  // Adding a new user while logged in
+  app.post("/api/addUser", function(req, res) {
+    username = req.body.username;
+    password = req.body.password;
+    FamilyId = req.body.FamilyId;
+    role = req.body.role;
+
+    if (!username) {
+      return res
+        .status(400)
+        .json({ message: "username not passed in on request." });
+    }
+    if (!password) {
+      return res
+        .status(400)
+        .json({ message: "password not passed in on request." });
+    }
+    if (!FamilyId) {
+      return res
+        .status(400)
+        .json({ message: "family ID not passed in on request." });
+    }
+    if (!role) {
+      return res
+        .status(400)
+        .json({ message: "role not passed in on request." });
+    }
+    //Then create the new user
+    db.User.create({
+      name: username,
+      password: password,
+      role: role,
+      FamilyId: FamilyId
+    })
+      .then(function(user) {
+        res.json({ id: user.id });
+      })
+      .catch(function(err) {
+        console.log(err);
+        res.status(400).json({ message: "User already exists." });
+      });
+  });
+
+  // Login an existing user and differentiate if it is a parent or a kid
   app.post("/api/login", passport.authenticate("local"), function(req, res) {
-    res.json(req.user);
+    res.status(200).json({
+      user: req.user.id,
+      name: req.user.name,
+      familyId: req.user.FamilyId,
+      role: req.user.role
+    });
   });
 
   // Route for logging user out
@@ -63,6 +116,20 @@ module.exports = function(app) {
     }
     req.logout();
     res.status(200).end();
+  });
+
+  // POST route for saving a new chore
+  app.post("/api/chore", function(req, res) {
+    db.Chore.create(req.body).then(function(dbPost) {
+      res.json(dbPost);
+    });
+  });
+
+  // POST route for saving a new reward
+  app.post("/api/reward", function(req, res) {
+    db.Reward.create(req.body).then(function(dbPost) {
+      res.json(dbPost);
+    });
   });
 
   // Delete an example by id
