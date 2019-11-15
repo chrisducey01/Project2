@@ -1,0 +1,64 @@
+/* styling for login/signup page */
+
+h4 {
+    margin-left: 25%;
+    font-family: 'Fredericka the Great', cursive;
+    font-size: 40px;
+    color: purple;
+}
+
+h1 {
+    align-content: center;
+    font-size: 120px;
+    font-family: 'Fredericka the Great', cursive;
+    color: red;
+}
+
+
+/* ------------ kidspage style -------------*/
+
+body {
+    height: 100vh;
+    overflow: hidden;
+    margin: auto;
+    background-image: url('../styles/images/corkbackground.jpeg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#chores {
+    background-color: #fdcb6e;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.navbar {
+    width: 100%;
+    background: none !important;
+    @media(max-width: 34em) {
+        background: black !important;
+    }
+    .navbar-toggler {
+        cursor: pointer;
+        outline: 0;
+    }
+    .nav-link {
+        text-transform: uppercase;
+        font-weight: bold;
+    }
+    .nav-item {
+        padding: 0 1rem;
+        @media(max-width: 34em) {
+            padding: 0;
+        }
+        .nav-link {
+            @media(max-width: 34em) {
+                font font-weight: normal;
+                color: #fff !important;
+            }
+        }
+    }
+}
+
+
+}
