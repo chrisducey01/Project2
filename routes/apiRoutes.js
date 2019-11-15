@@ -109,6 +109,44 @@ module.exports = function(app) {
     });
   });
 
+  // Register a new chore
+  app.post("/api/chore", function(req, res) {
+    task = req.body.task;
+    description = req.body.description;
+    difficultyRating = req.body.difficultyRating;
+    UserId = req.body.UserId;
+
+    if (!task) {
+      return res
+        .status(400)
+        .json({ message: "task not passed in on request." });
+    }
+    if (!description) {
+      return res
+        .status(400)
+        .json({ message: "description not passed in on request." });
+    }
+    if (!difficultyRating) {
+      return res
+        .status(400)
+        .json({ message: "difficultyRating not passed in on request." });
+    }
+    //Then create the new chore
+    db.Chore.create({
+      task: task,
+      description: description,
+      difficultyRating: difficultyRating,
+      UserId: UserId
+    })
+      .then(function(task) {
+        res.json({ id: task.id });
+      })
+      .catch(function(err) {
+        console.log(err);
+        res.status(400).json({ message: "Task already exists." });
+      });
+  });
+
   // Route for logging user out
   app.get("/api/logout", function(req, res) {
     if (!req.user) {
@@ -116,13 +154,6 @@ module.exports = function(app) {
     }
     req.logout();
     res.status(200).end();
-  });
-
-  // POST route for saving a new chore
-  app.post("/api/chore", function(req, res) {
-    db.Chore.create(req.body).then(function(dbPost) {
-      res.json(dbPost);
-    });
   });
 
   // POST route for saving a new reward
