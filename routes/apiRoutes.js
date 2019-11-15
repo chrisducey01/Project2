@@ -58,11 +58,12 @@ module.exports = function(app) {
 
   // Login an existing user and differentiate if it is a parent or a kid
   app.post("/api/login", passport.authenticate("local"), function(req, res) {
-    if (req.user.role === "Parent") {
-      res.redirect(307, "/parents");
-    } else {
-      res.redirect(307, "/kids");
-    }
+    res.status(200).json({
+      user: req.user.id,
+      name: req.user.name,
+      familyId: req.user.FamilyId,
+      role: req.user.role
+    });
   });
 
   // Route for logging user out
@@ -72,6 +73,20 @@ module.exports = function(app) {
     }
     req.logout();
     res.status(200).end();
+  });
+
+  // POST route for saving a new chore
+  app.post("/api/chore", function(req, res) {
+    db.Chore.create(req.body).then(function(dbPost) {
+      res.json(dbPost);
+    });
+  });
+
+  // POST route for saving a new reward
+  app.post("/api/reward", function(req, res) {
+    db.Reward.create(req.body).then(function(dbPost) {
+      res.json(dbPost);
+    });
   });
 
   // Delete an example by id

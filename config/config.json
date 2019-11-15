@@ -1,12 +1,7 @@
 {
   "development": {
-<<<<<<< HEAD
-    "username": "cducey",
-    "password": "password",
-=======
     "username": "root",
     "password": "root",
->>>>>>> c309160a4b97286594311f8ff385ccfac9e3ba34
     "database": "chrackerdb",
     "host": "localhost",
     "dialect": "mysql"
