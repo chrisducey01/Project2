@@ -1,35 +1,39 @@
 var $loginBtn = $("#loginBtn");
-var $signBtn = $("#signBtn");
-
-$signBtn.on("click", signupSubmit);
-$loginBtn.on("click", loginSubmit);
+//var $signBtn = $("#signBtn");
+console.log("garbage");
+//$signBtn.on("click", signupSubmit);
 
 var API = {
-  getLogin: function() {
+  getLogin: function(data) {
     return $.ajax({
       url: "api/login",
-      type: "POST"
+      type: "POST",
+      data: data
     });
   }
 };
 
 var loginSubmit = function(event) {
   event.preventDefault();
-
-  var example = {
-    text: $exampleText.val().trim(),
-    description: $exampleDescription.val().trim()
+  console.log("garbage");
+  var loginData = {
+    userName: $("#email-input")
+      .val()
+      .trim(),
+    passWord: $("#password-input")
+      .val()
+      .trim()
   };
-
-  if (!(example.text && example.description)) {
-    alert("You must enter an example text and description!");
+  console.log(loginData);
+  if (!(loginData.userName && loginData.passWord)) {
+    alert("That was the wrong password TINY HUMAN!");
     return;
   }
 
-  API.saveLogin(example).then(function() {
-    refreshExamples();
+  API.getLogin(loginData).then(function() {
+    $("#email-input").val("");
+    $("#password-input").val("");
   });
-
-  $exampleText.val("");
-  $exampleDescription.val("");
 };
+
+$loginBtn.on("click", loginSubmit);
