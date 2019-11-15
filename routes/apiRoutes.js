@@ -56,6 +56,49 @@ module.exports = function(app) {
     });
   });
 
+  // Adding a new user while logged in
+  app.post("/api/addUser", function(req, res) {
+    username = req.body.username;
+    password = req.body.password;
+    FamilyId = req.body.FamilyId;
+    role = req.body.role;
+
+    if (!username) {
+      return res
+        .status(400)
+        .json({ message: "username not passed in on request." });
+    }
+    if (!password) {
+      return res
+        .status(400)
+        .json({ message: "password not passed in on request." });
+    }
+    if (!FamilyId) {
+      return res
+        .status(400)
+        .json({ message: "family ID not passed in on request." });
+    }
+    if (!role) {
+      return res
+        .status(400)
+        .json({ message: "role not passed in on request." });
+    }
+    //Then create the new user
+    db.User.create({
+      name: username,
+      password: password,
+      role: role,
+      FamilyId: FamilyId
+    })
+      .then(function(user) {
+        res.json({ id: user.id });
+      })
+      .catch(function(err) {
+        console.log(err);
+        res.status(400).json({ message: "User already exists." });
+      });
+  });
+
   // Login an existing user and differentiate if it is a parent or a kid
   app.post("/api/login", passport.authenticate("local"), function(req, res) {
     res.status(200).json({
