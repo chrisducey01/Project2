@@ -45,20 +45,106 @@ module.exports = function(app) {
         password: password,
         role: role,
         FamilyId: family.id
-      }).then(function(user) {
-        res.json({ id: user.id });
-      });
+      })
+        .then(function(user) {
+          res.json({ id: user.id });
+        })
+        .catch(function(err) {
+          console.log(err);
+          res.status(400).json({ message: "User already exists." });
+        });
     });
+  });
+
+  // Adding a new user while logged in
+  app.post("/api/addUser", function(req, res) {
+    username = req.body.username;
+    password = req.body.password;
+    FamilyId = req.body.FamilyId;
+    role = req.body.role;
+
+    if (!username) {
+      return res
+        .status(400)
+        .json({ message: "username not passed in on request." });
+    }
+    if (!password) {
+      return res
+        .status(400)
+        .json({ message: "password not passed in on request." });
+    }
+    if (!FamilyId) {
+      return res
+        .status(400)
+        .json({ message: "family ID not passed in on request." });
+    }
+    if (!role) {
+      return res
+        .status(400)
+        .json({ message: "role not passed in on request." });
+    }
+    //Then create the new user
+    db.User.create({
+      name: username,
+      password: password,
+      role: role,
+      FamilyId: FamilyId
+    })
+      .then(function(user) {
+        res.json({ id: user.id });
+      })
+      .catch(function(err) {
+        console.log(err);
+        res.status(400).json({ message: "User already exists." });
+      });
   });
 
   // Login an existing user and differentiate if it is a parent or a kid
   app.post("/api/login", passport.authenticate("local"), function(req, res) {
-    res.json(req.user);
-    if (req.user.role === "Parent") {
-      res.redirect(307, "/api/parents");
-    } else {
-      res.redirect(307, "/api/kids");
+    res.status(200).json({
+      user: req.user.id,
+      name: req.user.name,
+      familyId: req.user.FamilyId,
+      role: req.user.role
+    });
+  });
+
+  // Register a new chore
+  app.post("/api/chore", function(req, res) {
+    task = req.body.task;
+    description = req.body.description;
+    difficultyRating = req.body.difficultyRating;
+    UserId = req.body.UserId;
+
+    if (!task) {
+      return res
+        .status(400)
+        .json({ message: "task not passed in on request." });
     }
+    if (!description) {
+      return res
+        .status(400)
+        .json({ message: "description not passed in on request." });
+    }
+    if (!difficultyRating) {
+      return res
+        .status(400)
+        .json({ message: "difficultyRating not passed in on request." });
+    }
+    //Then create the new chore
+    db.Chore.create({
+      task: task,
+      description: description,
+      difficultyRating: difficultyRating,
+      UserId: UserId
+    })
+      .then(function(task) {
+        res.json({ id: task.id });
+      })
+      .catch(function(err) {
+        console.log(err);
+        res.status(400).json({ message: "Task already exists." });
+      });
   });
 
   // Route for logging user out
@@ -68,6 +154,13 @@ module.exports = function(app) {
     }
     req.logout();
     res.status(200).end();
+  });
+
+  // POST route for saving a new reward
+  app.post("/api/reward", function(req, res) {
+    db.Reward.create(req.body).then(function(dbPost) {
+      res.json(dbPost);
+    });
   });
 
   // Delete an example by id

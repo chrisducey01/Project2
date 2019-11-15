@@ -1,35 +1,64 @@
 var $loginBtn = $("#loginBtn");
 var $signBtn = $("#signBtn");
 
-$signBtn.on("click", signupSubmit);
-$loginBtn.on("click", loginSubmit);
-
 var API = {
-  getLogin: function() {
+  getLogin: function(data) {
     return $.ajax({
-      url: "api/login",
-      type: "POST"
+      url: "/api/login",
+      type: "POST",
+      data: data
+    });
+  },
+  addUser: function(data) {
+    return $.ajax({
+      url: "/api/signup",
+      type: "POST",
+      data: data
     });
   }
 };
 
+var signupSubmit = function(event) {
+  event.preventDefault();
+  var signupData = {
+    username: $("#email-input")
+      .val()
+      .trim(),
+    password: $("#password-input")
+      .val()
+      .trim(),
+    family: $("#name-input")
+      .val()
+      .trim(),
+    role: "Parent"
+  };
+  API.addUser(signupData).then(function() {
+    $("#email-input").val("");
+    $("#password-input").val("");
+    $("#name-input").val();
+  });
+};
+
 var loginSubmit = function(event) {
   event.preventDefault();
-
-  var example = {
-    text: $exampleText.val().trim(),
-    description: $exampleDescription.val().trim()
+  var loginData = {
+    username: $("#email-input")
+      .val()
+      .trim(),
+    password: $("#password-input")
+      .val()
+      .trim()
   };
-
-  if (!(example.text && example.description)) {
-    alert("You must enter an example text and description!");
+  if (!(loginData.username && loginData.password)) {
+    alert("That was the wrong password TINY HUMAN!");
     return;
   }
 
-  API.saveLogin(example).then(function() {
-    refreshExamples();
+  API.getLogin(loginData).then(function() {
+    $("#email-input").val("");
+    $("#password-input").val("");
   });
-
-  $exampleText.val("");
-  $exampleDescription.val("");
 };
+
+$loginBtn.on("click", loginSubmit);
+$signBtn.on("click", signupSubmit);
