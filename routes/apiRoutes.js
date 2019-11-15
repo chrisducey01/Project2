@@ -114,6 +114,11 @@ module.exports = function(app) {
     task = req.body.task;
     description = req.body.description;
     difficultyRating = req.body.difficultyRating;
+    monday = req.body.monday;
+    tuesday = req.body.tuesday;
+    wednesday = req.body.wednesday;
+    thursday = req.body.thursday;
+    friday = req.body.friday;
     UserId = req.body.UserId;
 
     if (!task) {
@@ -136,6 +141,11 @@ module.exports = function(app) {
       task: task,
       description: description,
       difficultyRating: difficultyRating,
+      monday: monday,
+      tuesday: tuesday,
+      wednesday: wednesday,
+      thursday: thursday,
+      friday: friday,
       UserId: UserId
     })
       .then(function(task) {
