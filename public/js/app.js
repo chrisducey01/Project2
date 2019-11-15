@@ -1,31 +1,55 @@
 var $loginBtn = $("#loginBtn");
-//var $signBtn = $("#signBtn");
-console.log("garbage");
-//$signBtn.on("click", signupSubmit);
+var $signBtn = $("#signBtn");
 
 var API = {
   getLogin: function(data) {
     return $.ajax({
-      url: "api/login",
+      url: "/api/login",
+      type: "POST",
+      data: data
+    });
+  },
+  addUser: function(data) {
+    return $.ajax({
+      url: "/api/signup",
       type: "POST",
       data: data
     });
   }
 };
 
-var loginSubmit = function(event) {
+var signupSubmit = function(event) {
   event.preventDefault();
-  console.log("garbage");
-  var loginData = {
-    userName: $("#email-input")
+  var signupData = {
+    username: $("#email-input")
       .val()
       .trim(),
-    passWord: $("#password-input")
+    password: $("#password-input")
+      .val()
+      .trim(),
+    family: $("#name-input")
+      .val()
+      .trim(),
+    role: "Parent"
+  };
+  API.addUser(signupData).then(function() {
+    $("#email-input").val("");
+    $("#password-input").val("");
+    $("#name-input").val();
+  });
+};
+
+var loginSubmit = function(event) {
+  event.preventDefault();
+  var loginData = {
+    username: $("#email-input")
+      .val()
+      .trim(),
+    password: $("#password-input")
       .val()
       .trim()
   };
-  console.log(loginData);
-  if (!(loginData.userName && loginData.passWord)) {
+  if (!(loginData.username && loginData.password)) {
     alert("That was the wrong password TINY HUMAN!");
     return;
   }
@@ -37,3 +61,4 @@ var loginSubmit = function(event) {
 };
 
 $loginBtn.on("click", loginSubmit);
+$signBtn.on("click", signupSubmit);
