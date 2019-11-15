@@ -6,7 +6,7 @@ console.log("garbage");
 var API = {
   getLogin: function(data) {
     return $.ajax({
-      url: "api/login",
+      url: "/api/login",
       type: "POST",
       data: data
     });
@@ -17,15 +17,15 @@ var loginSubmit = function(event) {
   event.preventDefault();
   console.log("garbage");
   var loginData = {
-    userName: $("#email-input")
+    username: $("#email-input")
       .val()
       .trim(),
-    passWord: $("#password-input")
+    password: $("#password-input")
       .val()
       .trim()
   };
   console.log(loginData);
-  if (!(loginData.userName && loginData.passWord)) {
+  if (!(loginData.username && loginData.password)) {
     alert("That was the wrong password TINY HUMAN!");
     return;
   }
