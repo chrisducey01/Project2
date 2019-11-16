@@ -1,34 +1,7 @@
 {
-<<<<<<< HEAD
-    "development": {
-        "username": "root",
-<<<<<<< HEAD
-        "password": "Sonora83",
-=======
-        "password": "root",
->>>>>>> 2c44bad73bb3030660c02fe62926cb6969548e37
-        "database": "chrackerdb",
-        "host": "localhost",
-        "dialect": "mysql"
-    },
-    "test": {
-        "username": "root",
-        "password": null,
-        "database": "testdb",
-        "host": "localhost",
-        "dialect": "mysql",
-        "logging": false
-    },
-    "production": {
-        "use_env_variable": "JAWSDB_URL",
-        "dialect": "mysql"
-    }
-
-}
-=======
   "development": {
     "username": "root",
-    "password": "loveofcode",
+    "password": "root",
     "database": "chrackerdb",
     "host": "localhost",
     "dialect": "mysql"
@@ -46,4 +19,3 @@
     "dialect": "mysql"
   }
 }
->>>>>>> master
