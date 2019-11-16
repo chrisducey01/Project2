@@ -51,18 +51,33 @@ module.exports = function(app) {
         })
         .catch(function(err) {
           console.log(err);
-          res.status(400).json({ message: "User already exists." });
+          if (err.errors[0].validatorKey === "isEmail") {
+            return res
+              .status(400)
+              .json({ message: "Username must be an email address." });
+          } else if (err.errors[0].validatorKey === "not_unique") {
+            return res.status(400).json({ message: "User already exists." });
+          }
+          res.status(400).json({ message: "Unable to register user." });
         });
     });
   });
 
   // Adding a new user while logged in
   app.post("/api/addUser", function(req, res) {
+    // If not logged in, return error and do not add new user
+    if (!req.user) {
+      return res.status(401).json({
+        message:
+          "Unauthorized.  Must sign in before adding a user to your account."
+      });
+    }
     username = req.body.username;
     password = req.body.password;
     FamilyId = req.body.FamilyId;
     role = req.body.role;
 
+    // Check that needed variables were passed in the request body
     if (!username) {
       return res
         .status(400)
@@ -111,6 +126,17 @@ module.exports = function(app) {
 
   // Register a new chore
   app.post("/api/chore", function(req, res) {
+    if (!req.user) {
+      return res.status(401).json({
+        message:
+          "Unauthorized.  Must sign in before adding a user to your account."
+      });
+    } else if (req.user.FamilyId !== req.body.FamilyId) {
+      return res
+        .status(401)
+        .json({ message: "Unauthorized.  Not a valid user on your account." });
+    }
+
     task = req.body.task;
     description = req.body.description;
     difficultyRating = req.body.difficultyRating;
