@@ -92,3 +92,12 @@
     .top {
         background-color: #82ccdd;
     }
+
+    .checkmark{
+        position: absolute;
+  top: 0;
+  left: 0;
+  height: 55px;
+  width: 25px;
+  background-color: #fff;
+    }
