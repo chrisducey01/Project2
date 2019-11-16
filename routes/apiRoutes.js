@@ -224,6 +224,26 @@ module.exports = function(app) {
       });
   });
 
+  // PUT route for updating chores
+  app.put("/api/chore", function(req, res) {
+    db.Chore.update(req.body, {
+      where: {
+        id: req.body.id
+      },
+      returning: true,
+      plain: true
+    })
+      .then(function(rowUpdated) {
+        db.Chore.findOne({ where: { id: req.body.id } }).then(function(dbRow) {
+          res.json(dbRow);
+          console.log(rowUpdated);
+        });
+      })
+      .catch(function(updatedChore) {
+        res.json(updatedChore);
+      });
+  });
+
   // Delete an example by id
   app.delete("/api/examples/:id", function(req, res) {
     db.Example.destroy({ where: { id: req.params.id } }).then(function(

@@ -1,5 +1,6 @@
 var $loginBtn = $("#loginBtn");
 var $signBtn = $("#signBtn");
+var $btnAdd = $("#btnAdd");
 
 var API = {
   getLogin: function(data) {
@@ -9,9 +10,16 @@ var API = {
       data: data
     });
   },
-  addUser: function(data) {
+  addParent: function(data) {
     return $.ajax({
       url: "/api/signup",
+      type: "POST",
+      data: data
+    });
+  },
+  addKid: function(data) {
+    return $.ajax({
+      url: "/api/addUser",
       type: "POST",
       data: data
     });
@@ -32,7 +40,7 @@ var signupSubmit = function(event) {
       .trim(),
     role: "Parent"
   };
-  API.addUser(signupData).then(function() {
+  API.addParent(signupData).then(function() {
     $("#email-input").val("");
     $("#password-input").val("");
     $("#name-input").val();
@@ -64,5 +72,25 @@ var loginSubmit = function(event) {
   });
 };
 
+var kidSignup = function(event) {
+  event.preventDefault();
+  var kidsignupData = {
+    username: $("#kidname-input")
+      .val()
+      .trim(),
+    password: $("#kidpassword-input")
+      .val()
+      .trim(),
+    role: "Child",
+    familyId: $("btnAdd").val()
+  };
+  API.addKid(kidsignupData).then(function() {
+    $("#kidname-input").val();
+    $("#kidpassword-input").val("");
+    window.location.href = "/parents";
+  });
+};
+
 $loginBtn.on("click", loginSubmit);
 $signBtn.on("click", signupSubmit);
+$btnAdd.on("click", kidSignup);
