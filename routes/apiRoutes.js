@@ -126,6 +126,17 @@ module.exports = function(app) {
 
   // Register a new chore
   app.post("/api/chore", function(req, res) {
+    if (!req.user) {
+      return res.status(401).json({
+        message:
+          "Unauthorized.  Must sign in before adding a user to your account."
+      });
+    } else if (req.user.FamilyId !== req.body.FamilyId) {
+      return res
+        .status(401)
+        .json({ message: "Unauthorized.  Not a valid user on your account." });
+    }
+
     task = req.body.task;
     description = req.body.description;
     difficultyRating = req.body.difficultyRating;
