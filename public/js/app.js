@@ -131,3 +131,45 @@ $btnAdd.on("click", kidSignup);
 $addaKid.on("click", gotoPage);
 $logout.on("click", logoutUser);
 $btnChoreAdd.on("click", choreAdd);
+
+// Update chore status based on which day and chore was clicked
+$(".chore-status").click(function() {
+  var day = $(this).data("day");
+  var state = $(this).data("state");
+  var updatedStatus;
+
+  if (state === "checked") {
+    updatedStatus = false;
+    $(this).data("state", "unchecked");
+  } else {
+    updatedStatus = true;
+    $(this).data("state", "checked");
+  }
+
+  var choreObj = { id: $(this).data("chore-id") };
+  if (day === "monday") {
+    choreObj.monday = updatedStatus;
+  }
+  if (day === "tuesday") {
+    choreObj.tuesday = updatedStatus;
+  }
+  if (day === "wednesday") {
+    choreObj.wednesday = updatedStatus;
+  }
+  if (day === "thursday") {
+    choreObj.thursday = updatedStatus;
+  }
+  if (day === "friday") {
+    choreObj.friday = updatedStatus;
+  }
+
+  $.ajax({
+    method: "PUT",
+    url: "/api/chore",
+    data: choreObj
+  }).then(function(resp) {
+    console.log(resp);
+  });
+
+  console.log(choreObj);
+});
