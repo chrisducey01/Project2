@@ -1,6 +1,8 @@
 // Requiring our custom middleware for checking if a user is logged in
 var isAuthenticated = require("../config/middleware/isAuthenticated");
 var db = require("../models");
+var Sequelize = require('sequelize');
+var Op = Sequelize.Op;
 
 module.exports = function(app) {
   // Load signup page
@@ -25,7 +27,19 @@ module.exports = function(app) {
 
   // Load parents page once authenticated
   app.get("/parents", isAuthenticated, function(req, res) {
-    res.render("parents");
+    // Find all the kids related to that parent to display on the page
+    db.User.findAll({
+      where: { FamilyId: req.user.FamilyId,
+        id: { [Op.ne]: req.user.id } }
+    })
+      .then(function(dbUsers) {
+        console.log(dbUsers);
+        res.render("parents", { kids: dbUsers });
+      })
+      .catch(function(err) {
+        console.log(err);
+        res.status(400).json({ message: "Error retrieving kids from db." });
+      });
   });
 
   // Load kids page once authenticated
@@ -36,7 +50,8 @@ module.exports = function(app) {
         console.log(dbRes);
         res.render("kids2", { chores: dbRes });
       })
-      .catch(function() {
+      .catch(function(err) {
+        console.log(err);
         console.log("Error getting data from database");
       });
   });
