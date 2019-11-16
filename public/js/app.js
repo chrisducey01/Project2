@@ -36,6 +36,7 @@ var signupSubmit = function(event) {
     $("#email-input").val("");
     $("#password-input").val("");
     $("#name-input").val();
+    window.location.href = "/login";
   });
 };
 
@@ -54,9 +55,12 @@ var loginSubmit = function(event) {
     return;
   }
 
-  API.getLogin(loginData).then(function() {
-    $("#email-input").val("");
-    $("#password-input").val("");
+  API.getLogin(loginData).then(function(data) {
+    if (data.role === "Parent") {
+      window.location.href = "/parents";
+    } else if (data.role === "Child") {
+      window.location.href = "/kids";
+    }
   });
 };
 

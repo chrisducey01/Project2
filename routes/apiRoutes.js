@@ -51,18 +51,33 @@ module.exports = function(app) {
         })
         .catch(function(err) {
           console.log(err);
-          res.status(400).json({ message: "User already exists." });
+          if (err.errors[0].validatorKey === "isEmail") {
+            return res
+              .status(400)
+              .json({ message: "Username must be an email address." });
+          } else if (err.errors[0].validatorKey === "not_unique") {
+            return res.status(400).json({ message: "User already exists." });
+          }
+          res.status(400).json({ message: "Unable to register user." });
         });
     });
   });
 
   // Adding a new user while logged in
   app.post("/api/addUser", function(req, res) {
+    // If not logged in, return error and do not add new user
+    if (!req.user) {
+      return res.status(401).json({
+        message:
+          "Unauthorized.  Must sign in before adding a user to your account."
+      });
+    }
     username = req.body.username;
     password = req.body.password;
     FamilyId = req.body.FamilyId;
     role = req.body.role;
 
+    // Check that needed variables were passed in the request body
     if (!username) {
       return res
         .status(400)
@@ -111,9 +126,25 @@ module.exports = function(app) {
 
   // Register a new chore
   app.post("/api/chore", function(req, res) {
+    if (!req.user) {
+      return res.status(401).json({
+        message:
+          "Unauthorized.  Must sign in before adding a user to your account."
+      });
+    } else if (req.user.FamilyId !== req.body.FamilyId) {
+      return res
+        .status(401)
+        .json({ message: "Unauthorized.  Not a valid user on your account." });
+    }
+
     task = req.body.task;
     description = req.body.description;
     difficultyRating = req.body.difficultyRating;
+    monday = req.body.monday;
+    tuesday = req.body.tuesday;
+    wednesday = req.body.wednesday;
+    thursday = req.body.thursday;
+    friday = req.body.friday;
     UserId = req.body.UserId;
 
     if (!task) {
@@ -136,6 +167,11 @@ module.exports = function(app) {
       task: task,
       description: description,
       difficultyRating: difficultyRating,
+      monday: monday,
+      tuesday: tuesday,
+      wednesday: wednesday,
+      thursday: thursday,
+      friday: friday,
       UserId: UserId
     })
       .then(function(task) {
@@ -157,10 +193,35 @@ module.exports = function(app) {
   });
 
   // POST route for saving a new reward
+  // Register a new chore
   app.post("/api/reward", function(req, res) {
-    db.Reward.create(req.body).then(function(dbPost) {
-      res.json(dbPost);
-    });
+    name = req.body.name;
+    points = req.body.points;
+    FamilyId = req.body.FamilyId;
+
+    if (!name) {
+      return res
+        .status(400)
+        .json({ message: "name not passed in on request." });
+    }
+    if (!points) {
+      return res
+        .status(400)
+        .json({ message: "points not passed in on request." });
+    }
+    //Then create the new reward
+    db.Reward.create({
+      name: name,
+      points: points,
+      FamilyId: FamilyId
+    })
+      .then(function(name) {
+        res.json({ id: name.id });
+      })
+      .catch(function(err) {
+        console.log(err);
+        res.status(400).json({ message: "Reward already exists." });
+      });
   });
 
   // Delete an example by id
