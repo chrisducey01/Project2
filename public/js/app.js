@@ -2,6 +2,7 @@ var $loginBtn = $("#loginBtn");
 var $signBtn = $("#signBtn");
 var $btnAdd = $("#btnAdd");
 var $addaKid = $("#addaKid");
+var $logout = $("#logout");
 
 var API = {
   getLogin: function(data) {
@@ -24,6 +25,13 @@ var API = {
       type: "POST",
       data: data
     });
+  }
+  logOut: function(data){
+    return $.ajax({
+      url: "/api/logout",
+      type: "GET",
+      data: data
+    })
   }
 };
 
@@ -96,7 +104,12 @@ var gotoPage = function() {
   window.location.href = "/kidsSignUp";
 };
 
+var logoutUser = function() {
+  window.location.href = "/login";
+};
+
 $loginBtn.on("click", loginSubmit);
 $signBtn.on("click", signupSubmit);
 $btnAdd.on("click", kidSignup);
 $addaKid.on("click", gotoPage);
+$logout.on("click", logoutUser);
