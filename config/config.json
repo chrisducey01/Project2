@@ -2,6 +2,7 @@
   "development": {
     "username": "root",
     "password": "loveofcode",
+    "password": "root",
     "database": "chrackerdb",
     "host": "localhost",
     "dialect": "mysql"
@@ -18,4 +19,5 @@
     "use_env_variable": "JAWSDB_URL",
     "dialect": "mysql"
   }
+
 }
