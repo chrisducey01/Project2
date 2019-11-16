@@ -15,12 +15,14 @@
       <div class="column-select">
         <div class="module-border-wrap">
           <div class="module">
+            {{#each kids}}
             <div class="col-sm-6 select">
-              <h5>SELECT KID</h5>
-              <button id="btnKids" href="/kidSignUp" class="btn btn-dark"><img
-                  src="https://publicdomainvectors.org/photos/publicdomainq-0009051hdeplu.png" height="120px"
+              <h5>{{name}}</h5>
+              <button class="kidBtn" class="btn btn-dark" data-child-id="{{this.id}}"><img
+                  src="styles/images/cryingface.png" height="120px"
                   width="120px"></button>
             </div>
+            {{/each}}
             <div class="col-sm-6 add">
               <h5>ADD KID</h5>
               <button id="addaKid" href="/kidSignUp" class="btn btn-dark"><img
