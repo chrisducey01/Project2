@@ -45,6 +45,10 @@ module.exports = function(app) {
     res.render("kidsSignUp", { FamilyId: req.user.FamilyId });
   });
 
+  app.get("/parentschore", isAuthenticated, function(req, res) {
+    res.render("parentschore", { FamilyId: req.user.FamilyId });
+  });
+
   // Redirect to login page
   app.get("/", function(req, res) {
     res.redirect("/login");
