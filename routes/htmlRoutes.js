@@ -24,11 +24,15 @@ module.exports = function(app) {
       .then(function(dbRes) {
         console.log(req.user);
         console.log(dbRes);
-        res.render("kids2", { chores: dbRes });
+        res.render("kidsSignup", { chores: dbRes });
       })
       .catch(function() {
         console.log("Error getting data from database");
       });
+  });
+
+  app.get("/kidsSignUp", isAuthenticated, function(req, res) {
+    res.render("kidsSignUp", { FamilyId: req.user.FamilyId });
   });
 
   // Redirect to login page
