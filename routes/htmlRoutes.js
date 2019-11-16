@@ -24,7 +24,7 @@ module.exports = function(app) {
       .then(function(dbRes) {
         console.log(req.user);
         console.log(dbRes);
-        res.render("kidsSignup", { chores: dbRes });
+        res.render("kids2", { chores: dbRes });
       })
       .catch(function() {
         console.log("Error getting data from database");
