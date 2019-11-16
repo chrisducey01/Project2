@@ -10,7 +10,17 @@ module.exports = function(app) {
 
   // Load login page
   app.get("/login", function(req, res) {
-    res.render("login");
+    if (req.user) {
+      if (req.user.role === "Parent") {
+        res.redirect("/parents");
+      } else if (req.user.role === "Child") {
+        res.redirect("/kids");
+      } else {
+        res.render("404");
+      }
+    } else {
+      res.render("login");
+    }
   });
 
   // Load parents page once authenticated
