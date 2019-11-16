@@ -20,13 +20,19 @@ module.exports = function(app) {
 
   // Load kids page once authenticated
   app.get("/kids", isAuthenticated, function(req, res) {
-    db.User.findAll({ where: { id: req.user.id } })
+    db.Chore.findAll({ where: { UserId: req.user.id } })
       .then(function(dbRes) {
-        res.render("kids2", { chores: dbRes });
+        console.log(req.user);
+        console.log(dbRes);
+        res.render("kidsSignup", { chores: dbRes });
       })
       .catch(function() {
         console.log("Error getting data from database");
       });
+  });
+
+  app.get("/kidsSignUp", isAuthenticated, function(req, res) {
+    res.render("kidsSignUp", { FamilyId: req.user.FamilyId });
   });
 
   // Redirect to login page
