@@ -131,10 +131,6 @@ module.exports = function(app) {
         message:
           "Unauthorized.  Must sign in before adding a user to your account."
       });
-    } else if (req.user.FamilyId !== req.body.FamilyId) {
-      return res
-        .status(401)
-        .json({ message: "Unauthorized.  Not a valid user on your account." });
     }
 
     task = req.body.task;
@@ -195,6 +191,12 @@ module.exports = function(app) {
   // POST route for saving a new reward
   // Register a new chore
   app.post("/api/reward", function(req, res) {
+    if (!req.user) {
+      return res.status(401).json({
+        message:
+          "Unauthorized.  Must sign in before adding a user to your account."
+      });
+    }
     name = req.body.name;
     points = req.body.points;
     FamilyId = req.body.FamilyId;
@@ -226,6 +228,12 @@ module.exports = function(app) {
 
   // PUT route for updating chores
   app.put("/api/chore", function(req, res) {
+    if (!req.user) {
+      return res.status(401).json({
+        message:
+          "Unauthorized.  Must sign in before adding a user to your account."
+      });
+    }
     db.Chore.update(req.body, {
       where: {
         id: req.body.id
@@ -244,11 +252,28 @@ module.exports = function(app) {
       });
   });
 
-  // Delete an example by id
-  app.delete("/api/examples/:id", function(req, res) {
-    db.Example.destroy({ where: { id: req.params.id } }).then(function(
-      dbExample
-    ) {
+  // Delete a chore by id
+  app.delete("/api/chore", function(req, res) {
+    if (!req.user) {
+      return res.status(401).json({
+        message:
+          "Unauthorized.  Must sign in before adding a user to your account."
+      });
+    }
+    db.Chore.destroy({ where: { id: req.body.id } }).then(function(dbExample) {
+      res.json(dbExample);
+    });
+  });
+
+  // Delete a kid by id
+  app.delete("/api/user", function(req, res) {
+    if (!req.user) {
+      return res.status(401).json({
+        message:
+          "Unauthorized.  Must sign in before adding a user to your account."
+      });
+    }
+    db.User.destroy({ where: { id: req.body.id } }).then(function(dbExample) {
       res.json(dbExample);
     });
   });
