@@ -25,26 +25,37 @@
     <link rel="stylesheet" href="../../public/styles/styles.css">
 
     <!-- Title your page -->
-    <title>
-        Kids Chores </title>
+    <title>Kids Chores </title>
 </head>
 
 <body>
 
-    <div id="chores">
+    <div id="navigation">
         <div class="container">
             <div class="row">
-                <nav class="navbar navbar-toggleable-md navbar-inverse">
+                <div class="navbar-expand">
+                    <nav class="navbar navbar-toggleable-md navbar-inverse">
 
-                    <!-- Logo -->
-                    <a href="#" class="navbar-brand" id="logo"><img src="../../public/styles/images/kidMyChores.png"></a>
+                        <!-- Logo -->
+                        <a href="#" class="navbar-brand" id="logo"><img src="../../public/styles/images/kidMyChores.png"></a>
 
-                    <!-- Navbar -->
-                    <button class="navbar-toggler navbar-toggler-right" type="button"> 
-                    </button>
-                    <button type="button" class="btn btn-link">Back</button>
-                    <button type="button" class="btn btn-link">Log out</button>
-                </nav>
+                        <!-- Navbar -->
+                        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span>
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+
+                        <div class="collapse navbar-collapse justify-content-end" id="navbarContent">
+                            <ul class="navbar-nav">
+                                <li class="nav-item">
+                                    <a class="nav-link text-primary" href="#">Home</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-primary" href="#">Log Out</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
             </div>
         </div>
     </div>
@@ -62,34 +73,61 @@
                 <div class="col-sm-2 top" div id="friday">FRIDAY</div>
             </div>
             <!-- Bed -->
-          
+            <div class="row" id="bedMade">
+                <div class="col-sm-2 white">Bed Made</div>
+                <div class="col-sm-2 white">
+                    <form>
+                        <input type="checkbox" id="chmonday" name="chmonday" value="Monday">
+                    </form>
+                </div>
+                <div class="col-sm-2 white">
+                    <form>
+                        <input type="checkbox" id="chtuesday" name="chtuesday" value="Tuesday">
+                    </form>
+                </div>
+                <div class="col-sm-2 white">
+                    <form>
+                        <input type="checkbox" id="chwednesday" name="chwednesday" value="Wednesday">
+                    </form>
+                </div>
+                <div class="col-sm-2 white">
+                    <form>
+                        <input type="checkbox" id="chthursday" name="chthursday" value="Thursday">
+                    </form>
+                </div>
+                <div class="col-sm-2 white">
+                    <form>
+                        <input type="checkbox" id="chfriday" name="chfriday" value="Friday">
+                    </form>
+                </div>
+            </div>
             <!-- clothes -->
             <div class="row" div id="clothesPicked">
                 <div class="col-sm-2 white">Clothes Picked Up <br><button class="btn btn-dark" type="submit">Delete</button></div>
                 <div class="col-sm-2 white">
                     <form>
                         <input type="checkbox" id="chmonday" name="chmonday" value="Monday">
-                        </form> 
+                    </form>
                 </div>
                 <div class="col-sm-2 white">
                     <form>
                         <input type="checkbox" id="chtuesday" name="chtuesday" value="Tuesday">
-                        </form> 
+                    </form>
                 </div>
                 <div class="col-sm-2 white">
                     <form>
                         <input type="checkbox" id="chwednesday" name="chwednesday" value="Wednesday">
-                        </form> 
+                    </form>
                 </div>
                 <div class="col-sm-2 white">
                     <form>
                         <input type="checkbox" id="chthursday" name="chthursday" value="Thursday">
-                        </form> 
+                    </form>
                 </div>
                 <div class="col-sm-2 white">
                     <form>
                         <input type="checkbox" id="chfriday" name="chfriday" value="Friday">
-                        </form> 
+                    </form>
                 </div>
             </div>
             <!-- pets fed -->
@@ -98,27 +136,27 @@
                 <div class="col-sm-2 white">
                     <form>
                         <input type="checkbox" id="chmonday" name="chmonday" value="Monday">
-                        </form> 
+                    </form>
                 </div>
                 <div class="col-sm-2 white">
                     <form>
                         <input type="checkbox" id="chtuesday" name="chtuesday" value="Tuesday">
-                        </form> 
+                    </form>
                 </div>
                 <div class="col-sm-2 white">
                     <form>
                         <input type="checkbox" id="chwednesday" name="chwednesday" value="Wednesday">
-                        </form> 
+                    </form>
                 </div>
                 <div class="col-sm-2 white">
                     <form>
                         <input type="checkbox" id="chthursday" name="chthursday" value="Thursday">
-                        </form> 
+                    </form>
                 </div>
                 <div class="col-sm-2 white">
                     <form>
                         <input type="checkbox" id="chfriday" name="chfriday" value="Friday">
-                        </form> 
+                    </form>
                 </div>
             </div>
             <!-- water plants -->
@@ -127,27 +165,27 @@
                 <div class="col-sm-2 white">
                     <form>
                         <input type="checkbox" id="chmonday" name="chmonday" value="Monday">
-                        </form> 
+                    </form>
                 </div>
                 <div class="col-sm-2 white">
                     <form>
                         <input type="checkbox" id="chtuesday" name="chtuesday" value="Tuesday">
-                        </form> 
+                    </form>
                 </div>
                 <div class="col-sm-2 white">
                     <form>
                         <input type="checkbox" id="chwednesday" name="chwednesday" value="Wednesday">
-                        </form> 
+                    </form>
                 </div>
                 <div class="col-sm-2 white">
                     <form>
                         <input type="checkbox" id="chthursday" name="chthursday" value="Thursday">
-                        </form> 
+                    </form>
                 </div>
                 <div class="col-sm-2 white">
                     <form>
                         <input type="checkbox" id="chfriday" name="chfriday" value="Friday">
-                        </form> 
+                    </form>
                 </div>
             </div>
             <!-- do dishes -->
@@ -156,27 +194,27 @@
                 <div class="col-sm-2 white">
                     <form>
                         <input type="checkbox" id="chmonday" name="chmonday" value="Monday">
-                        </form> 
+                    </form>
                 </div>
                 <div class="col-sm-2 white">
                     <form>
                         <input type="checkbox" id="chtuesday" name="chtuesday" value="Tuesday">
-                        </form> 
+                    </form>
                 </div>
                 <div class="col-sm-2 white">
                     <form>
                         <input type="checkbox" id="chwednesday" name="chwednesday" value="Wednesday">
-                        </form> 
+                    </form>
                 </div>
                 <div class="col-sm-2 white">
                     <form>
                         <input type="checkbox" id="chthursday" name="chthursday" value="Thursday">
-                        </form> 
+                    </form>
                 </div>
                 <div class="col-sm-2 white">
                     <form>
                         <input type="checkbox" id="chfriday" name="chfriday" value="Friday">
-                        </form> 
+                    </form>
                 </div>
             </div>
             <!-- fold clothes -->
@@ -186,41 +224,41 @@
                 <div class="col-sm-2 white">
                     <form>
                         <input type="checkbox" id="chmonday" name="chmonday" value="Monday">
-                        </form> 
+                    </form>
                 </div>
                 <div class="col-sm-2 white">
                     <form>
                         <input type="checkbox" id="chtuesday" name="chtuesday" value="Tuesday">
-                        </form> 
+                    </form>
                 </div>
                 <div class="col-sm-2 white">
                     <form>
                         <input type="checkbox" id="chwednesday" name="chwednesday" value="Wednesday">
-                        </form> 
+                    </form>
                 </div>
                 <div class="col-sm-2 white">
                     <form>
                         <input type="checkbox" id="chthursday" name="chthursday" value="Thursday">
-                        </form> 
+                    </form>
                 </div>
                 <div class="col-sm-2 white">
                     <form>
                         <input type="checkbox" id="chfriday" name="chfriday" value="Friday">
-                        </form> 
+                    </form>
                 </div>
                 <br>
                 <br>
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" placeholder="Add a chore here" aria-label="Recipient's username" aria-describedby="button-addon2">
                     <div class="input-group-append">
-                      <button class="btn btn-dark" type="button" id="button-addon2">Add</button>
+                        <button class="btn btn-dark" type="button" id="button-addon2">Add</button>
                     </div>
-                  </div>
+                </div>
             </div>
         </div>
     </div>
-    
-    
+
+
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js " integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin=" anonymous ">
