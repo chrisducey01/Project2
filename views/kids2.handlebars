@@ -48,35 +48,56 @@
 
 
         {{#each chores}}
-        <div class="row" id="petsFed">
+        <div class="row">
             <div class="col-sm-2 white" id="chore-{{this.id}}">{{this.task}}</div>
             <div class="col-sm-2 white">
                 <form>
+                    <input type="checkbox" class="chore-status" data-day="monday" data-chore-id="{{this.id}}" data-user-id="{{this.UserId}}"
                     {{#if this.monday}}
-                    <input type="checkbox" id="chmonday" name="chmonday" value="Monday" checked>
+                    data-state="checked" checked>
                     {{else}}
-                    <input type="checkbox" id="chmonday" name="chmonday" value="Monday">
+                    data-state="unchecked">
                     {{/if}}
                 </form>
             </div>
             <div class="col-sm-2 white">
                 <form>
-                    <input type="checkbox" id="chtuesday" name="chtuesday" value="Tuesday">
+                    <input type="checkbox" class="chore-status" data-day="tuesday" data-chore-id="{{this.id}}" data-user-id="{{this.UserId}}"
+                    {{#if this.tuesday}}
+                    data-state="checked" checked>
+                    {{else}}
+                    data-state="unchecked">
+                    {{/if}}
                 </form>
             </div>
             <div class="col-sm-2 white">
                 <form>
-                    <input type="checkbox" id="chwednesday" name="chwednesday" value="Wednesday">
+                    <input type="checkbox" class="chore-status" data-day="wednesday" data-chore-id="{{this.id}}" data-user-id="{{this.UserId}}"
+                    {{#if this.wednesday}}
+                    data-state="checked" checked>
+                    {{else}}
+                    data-state="unchecked">
+                    {{/if}}
                 </form>
             </div>
             <div class="col-sm-2 white">
                 <form>
-                    <input type="checkbox" id="chthursday" name="chthursday" value="Thursday">
+                    <input type="checkbox" class="chore-status" data-day="thursday" data-chore-id="{{this.id}}" data-user-id="{{this.UserId}}"
+                    {{#if this.thursday}}
+                    data-state="checked" checked>
+                    {{else}}
+                    data-state="unchecked">
+                    {{/if}}
                 </form>
             </div>
             <div class="col-sm-2 white">
                 <form>
-                    <input type="checkbox" id="chfriday" name="chfriday" value="Friday">
+                    <input type="checkbox" class="chore-status" data-day="friday" data-chore-id="{{this.id}}" data-user-id="{{this.UserId}}"
+                    {{#if this.friday}}
+                    data-state="checked" checked>
+                    {{else}}
+                    data-state="unchecked">
+                    {{/if}}
                 </form>
             </div>
         </div>
