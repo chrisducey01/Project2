@@ -92,3 +92,9 @@
     .top {
         background-color: #82ccdd;
     }
+
+    input[type=checkbox] + label:before{
+        content:"\2714";
+        border: 0.1em solid #000;
+
+    }
