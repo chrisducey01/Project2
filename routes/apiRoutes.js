@@ -131,10 +131,6 @@ module.exports = function(app) {
         message:
           "Unauthorized.  Must sign in before adding a user to your account."
       });
-    } else if (req.user.FamilyId !== req.body.FamilyId) {
-      return res
-        .status(401)
-        .json({ message: "Unauthorized.  Not a valid user on your account." });
     }
 
     task = req.body.task;
@@ -244,12 +240,21 @@ module.exports = function(app) {
       });
   });
 
-  // Delete an example by id
-  app.delete("/api/examples/:id", function(req, res) {
-    db.Example.destroy({ where: { id: req.params.id } }).then(function(
+  // Delete a chore by id
+  app.delete("/api/chore", function(req, res) {
+    db.Chore.destroy({ where: { id: req.body.id } }).then(function(
       dbExample
     ) {
       res.json(dbExample);
     });
   });
+
+    // Delete a kid by id
+    app.delete("/api/user", function(req, res) {
+      db.User.destroy({ where: { id: req.body.id } }).then(function(
+        dbExample
+      ) {
+        res.json(dbExample);
+      });
+    });
 };
