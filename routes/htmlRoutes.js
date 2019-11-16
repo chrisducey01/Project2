@@ -18,8 +18,9 @@ module.exports = function(app) {
       } else {
         res.render("404");
       }
+    } else {
+      res.render("login");
     }
-    res.render("login");
   });
 
   // Load parents page once authenticated
