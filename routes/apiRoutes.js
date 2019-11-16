@@ -232,9 +232,16 @@ module.exports = function(app) {
       },
       returning: true,
       plain: true
-    }).then(function(rowUpdated) {
-      res.json(rowUpdated);
-    });
+    })
+      .then(function(rowUpdated) {
+        db.Chore.findOne({ where: { id: req.body.id } }).then(function(dbRow) {
+          res.json(dbRow);
+          console.log(rowUpdated);
+        });
+      })
+      .catch(function(updatedChore) {
+        res.json(updatedChore);
+      });
   });
 
   // Delete an example by id
