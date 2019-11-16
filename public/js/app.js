@@ -1,6 +1,8 @@
 var $loginBtn = $("#loginBtn");
 var $signBtn = $("#signBtn");
 var $btnAdd = $("#btnAdd");
+var $btnChoreAdd = $("#button-addon2");
+var $btnChoreDelete = $("#btnChoreDelete");
 var $addaKid = $("#addaKid");
 var $logout = $("#logout");
 
@@ -99,6 +101,20 @@ var kidSignup = function(event) {
   });
 };
 
+var choreAdd = function(event) {
+  event.preventDefault();
+  var choreData = {
+    username: $("#task-input")
+      .val()
+      .trim(),
+    UserId: $("#button-addon2").data("userid")
+  };
+  API.addChore(choreData).then(function() {
+    $("#task-input").val("");
+    window.location.href = "/parentschore";
+  });
+};
+
 var gotoPage = function() {
   window.location.href = "/kidsSignUp";
 };
@@ -114,6 +130,7 @@ $signBtn.on("click", signupSubmit);
 $btnAdd.on("click", kidSignup);
 $addaKid.on("click", gotoPage);
 $logout.on("click", logoutUser);
+$btnChoreAdd.on("click", choreAdd);
 
 // Update chore status based on which day and chore was clicked
 $(".chore-status").click(function() {
