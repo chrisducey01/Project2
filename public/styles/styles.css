@@ -31,16 +31,20 @@
         height: 100%;
     }
     
-    #chores {
+    #navigation {
         background-color: #2C3A47;
         background-repeat: no-repeat;
         background-size: cover;
+        border: transparent;
+        height: 50px;
     }
     /* -------- navbar style ----------- */
     
     .navbar {
         width: 100%;
-        background: none;
+        background: #2C3A47;
+        border: transparent;
+        height: 40px;
     }
     
     .navbar-toggler {
@@ -57,10 +61,6 @@
         padding: 0 1rem;
     }
     /* -------- navbar style ----------- */
-    
-    ion-icon {
-        font-size: 64px;
-    }
     
     .feature-wrapper {
         font-family: 'Baloo Bhai', cursive;

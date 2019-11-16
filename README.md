@@ -27,7 +27,7 @@ Our mission is to work with parents who care about their kids development. Our a
 * JAVASCRIPT
 * CSS
 * MYSQL
-* 
+
 
 
 ## Benefits
