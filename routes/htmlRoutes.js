@@ -20,8 +20,10 @@ module.exports = function(app) {
 
   // Load kids page once authenticated
   app.get("/kids", isAuthenticated, function(req, res) {
-    db.User.findAll({ where: { id: req.user.id } })
+    db.Chore.findAll({ where: { UserId: req.user.id } })
       .then(function(dbRes) {
+        console.log(req.user);
+        console.log(dbRes);
         res.render("kids2", { chores: dbRes });
       })
       .catch(function() {
