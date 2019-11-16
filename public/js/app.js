@@ -116,7 +116,7 @@ $addaKid.on("click", gotoPage);
 $logout.on("click", logoutUser);
 
 // Update chore status based on which day and chore was clicked
-$(".chore-status").click(function(event) {
+$(".chore-status").click(function() {
   var day = $(this).data("day");
   var state = $(this).data("state");
   var updatedStatus;
