@@ -25,13 +25,12 @@ var API = {
       type: "POST",
       data: data
     });
-  }
-  logOut: function(data){
+  },
+  logOut: function() {
     return $.ajax({
       url: "/api/logout",
-      type: "GET",
-      data: data
-    })
+      type: "GET"
+    });
   }
 };
 
@@ -105,7 +104,9 @@ var gotoPage = function() {
 };
 
 var logoutUser = function() {
-  window.location.href = "/login";
+  API.logOut().then(function() {
+    window.location.href = "/login";
+  });
 };
 
 $loginBtn.on("click", loginSubmit);
