@@ -114,6 +114,11 @@ module.exports = function(app) {
     task = req.body.task;
     description = req.body.description;
     difficultyRating = req.body.difficultyRating;
+    monday = req.body.monday;
+    tuesday = req.body.tuesday;
+    wednesday = req.body.wednesday;
+    thursday = req.body.thursday;
+    friday = req.body.friday;
     UserId = req.body.UserId;
 
     if (!task) {
@@ -136,6 +141,11 @@ module.exports = function(app) {
       task: task,
       description: description,
       difficultyRating: difficultyRating,
+      monday: monday,
+      tuesday: tuesday,
+      wednesday: wednesday,
+      thursday: thursday,
+      friday: friday,
       UserId: UserId
     })
       .then(function(task) {
@@ -157,10 +167,35 @@ module.exports = function(app) {
   });
 
   // POST route for saving a new reward
+  // Register a new chore
   app.post("/api/reward", function(req, res) {
-    db.Reward.create(req.body).then(function(dbPost) {
-      res.json(dbPost);
-    });
+    name = req.body.name;
+    points = req.body.points;
+    FamilyId = req.body.FamilyId;
+
+    if (!name) {
+      return res
+        .status(400)
+        .json({ message: "name not passed in on request." });
+    }
+    if (!points) {
+      return res
+        .status(400)
+        .json({ message: "points not passed in on request." });
+    }
+    //Then create the new reward
+    db.Reward.create({
+      name: name,
+      points: points,
+      FamilyId: FamilyId
+    })
+      .then(function(name) {
+        res.json({ id: name.id });
+      })
+      .catch(function(err) {
+        console.log(err);
+        res.status(400).json({ message: "Reward already exists." });
+      });
   });
 
   // Delete an example by id
