@@ -93,8 +93,11 @@
         background-color: #82ccdd;
     }
 
-    input[type=checkbox] + label:before{
-        content:"\2714";
-        border: 0.1em solid #000;
-
+    .checkmark{
+        position: absolute;
+  top: 0;
+  left: 0;
+  height: 55px;
+  width: 25px;
+  background-color: #fff;
     }

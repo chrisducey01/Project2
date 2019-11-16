@@ -1,7 +1,7 @@
 {
     "development": {
         "username": "root",
-        "password": "root",
+        "password": "Zar1393zoc.",
         "database": "chrackerdb",
         "host": "localhost",
         "dialect": "mysql"
