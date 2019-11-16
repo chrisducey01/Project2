@@ -18,7 +18,8 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.INTEGER,
       allowNull: false,
       validate: {
-        len: [1, 5]
+        min: 1,
+        max: 5
       }
     },
     monday: {
