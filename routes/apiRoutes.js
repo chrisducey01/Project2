@@ -1,16 +1,16 @@
 var db = require("../models");
 var passport = require("../config/passport");
 
-module.exports = function(app) {
+module.exports = function (app) {
   // Get all examples
-  app.get("/api/examples", function(req, res) {
-    db.Example.findAll({}).then(function(dbExamples) {
+  app.get("/api/examples", function (req, res) {
+    db.Example.findAll({}).then(function (dbExamples) {
       res.json(dbExamples);
     });
   });
 
   // Sign-up a new user
-  app.post("/api/signup", function(req, res) {
+  app.post("/api/signup", function (req, res) {
     username = req.body.username;
     password = req.body.password;
     family = req.body.family;
@@ -38,7 +38,7 @@ module.exports = function(app) {
     }
 
     //First create the new family and retrieve the family id
-    db.Family.create({ name: family }).then(function(family) {
+    db.Family.create({ name: family }).then(function (family) {
       //Then create the new user
       db.User.create({
         name: username,
@@ -46,10 +46,10 @@ module.exports = function(app) {
         role: role,
         FamilyId: family.id
       })
-        .then(function(user) {
+        .then(function (user) {
           res.json({ id: user.id });
         })
-        .catch(function(err) {
+        .catch(function (err) {
           console.log(err);
           if (err.errors[0].validatorKey === "isEmail") {
             return res
@@ -64,7 +64,7 @@ module.exports = function(app) {
   });
 
   // Adding a new user while logged in
-  app.post("/api/addUser", function(req, res) {
+  app.post("/api/addUser", function (req, res) {
     // If not logged in, return error and do not add new user
     if (!req.user) {
       return res.status(401).json({
@@ -105,17 +105,17 @@ module.exports = function(app) {
       role: role,
       FamilyId: FamilyId
     })
-      .then(function(user) {
+      .then(function (user) {
         res.json({ id: user.id });
       })
-      .catch(function(err) {
+      .catch(function (err) {
         console.log(err);
         res.status(400).json({ message: "User already exists." });
       });
   });
 
   // Login an existing user and differentiate if it is a parent or a kid
-  app.post("/api/login", passport.authenticate("local"), function(req, res) {
+  app.post("/api/login", passport.authenticate("local"), function (req, res) {
     res.status(200).json({
       user: req.user.id,
       name: req.user.name,
@@ -125,7 +125,7 @@ module.exports = function(app) {
   });
 
   // Register a new chore
-  app.post("/api/chore", function(req, res) {
+  app.post("/api/chore", function (req, res) {
     if (!req.user) {
       return res.status(401).json({
         message:
@@ -170,17 +170,17 @@ module.exports = function(app) {
       friday: friday,
       UserId: UserId
     })
-      .then(function(task) {
+      .then(function (task) {
         res.json({ id: task.id });
       })
-      .catch(function(err) {
+      .catch(function (err) {
         console.log(err);
         res.status(400).json({ message: "Task already exists." });
       });
   });
 
   // Route for logging user out
-  app.get("/api/logout", function(req, res) {
+  app.get("/api/logout", function (req, res) {
     if (!req.user) {
       return res.status(401).end();
     }
@@ -190,7 +190,13 @@ module.exports = function(app) {
 
   // POST route for saving a new reward
   // Register a new chore
-  app.post("/api/reward", function(req, res) {
+  app.post("/api/reward", function (req, res) {
+    if (!req.user) {
+      return res.status(401).json({
+        message:
+          "Unauthorized.  Must sign in before adding a user to your account."
+      });
+    }
     name = req.body.name;
     points = req.body.points;
     FamilyId = req.body.FamilyId;
@@ -211,17 +217,23 @@ module.exports = function(app) {
       points: points,
       FamilyId: FamilyId
     })
-      .then(function(name) {
+      .then(function (name) {
         res.json({ id: name.id });
       })
-      .catch(function(err) {
+      .catch(function (err) {
         console.log(err);
         res.status(400).json({ message: "Reward already exists." });
       });
   });
 
   // PUT route for updating chores
-  app.put("/api/chore", function(req, res) {
+  app.put("/api/chore", function (req, res) {
+    if (!req.user) {
+      return res.status(401).json({
+        message:
+          "Unauthorized.  Must sign in before adding a user to your account."
+      });
+    }
     db.Chore.update(req.body, {
       where: {
         id: req.body.id
@@ -229,32 +241,44 @@ module.exports = function(app) {
       returning: true,
       plain: true
     })
-      .then(function(rowUpdated) {
-        db.Chore.findOne({ where: { id: req.body.id } }).then(function(dbRow) {
+      .then(function (rowUpdated) {
+        db.Chore.findOne({ where: { id: req.body.id } }).then(function (dbRow) {
           res.json(dbRow);
           console.log(rowUpdated);
         });
       })
-      .catch(function(updatedChore) {
+      .catch(function (updatedChore) {
         res.json(updatedChore);
       });
   });
 
   // Delete a chore by id
-  app.delete("/api/chore", function(req, res) {
-    db.Chore.destroy({ where: { id: req.body.id } }).then(function(
+  app.delete("/api/chore", function (req, res) {
+    if (!req.user) {
+      return res.status(401).json({
+        message:
+          "Unauthorized.  Must sign in before adding a user to your account."
+      });
+    }
+    db.Chore.destroy({ where: { id: req.body.id } }).then(function (
       dbExample
     ) {
       res.json(dbExample);
     });
   });
 
-    // Delete a kid by id
-    app.delete("/api/user", function(req, res) {
-      db.User.destroy({ where: { id: req.body.id } }).then(function(
-        dbExample
-      ) {
-        res.json(dbExample);
+  // Delete a kid by id
+  app.delete("/api/user", function (req, res) {
+    if (!req.user) {
+      return res.status(401).json({
+        message:
+          "Unauthorized.  Must sign in before adding a user to your account."
       });
+    }
+    db.User.destroy({ where: { id: req.body.id } }).then(function (
+      dbExample
+    ) {
+      res.json(dbExample);
     });
+  });
 };
