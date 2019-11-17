@@ -62,7 +62,8 @@ module.exports = function(app) {
 
   app.get("/parentschore", isAuthenticated, function(req, res) {
     db.Chore.findAll({where:{UserId: req.body.id}}).then(function(dbRes){
-      res.render("parentschore", { chores: dbRes });
+      console.log(dbRes);
+      res.render("parentschore", { chores: dbRes, UserId: req.body.id });
     }).catch(function(err){
       console.log(err);
       res.status(500).json({message: "Error getting data from database"});
