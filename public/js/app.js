@@ -43,7 +43,7 @@ var API = {
       data: data
     });
   },
-  choreStat: function() {
+  choreStat: function(choreObj) {
     return $.ajax({
       method: "PUT",
       url: "/api/chore",
@@ -130,20 +130,20 @@ var logoutUser = function() {
   });
 };
 
-var choreStatus = function() {
-  var day = $(this).data("day");
-  var state = $(this).data("state");
+var choreStatus = function(btn) {
+  var day = btn.data("day");
+  var state = btn.data("state");
   var updatedStatus;
 
   if (state === "checked") {
     updatedStatus = false;
-    $(this).data("state", "unchecked");
+    btn.data("state", "unchecked");
   } else {
     updatedStatus = true;
-    $(this).data("state", "checked");
+    btn.data("state", "checked");
   }
 
-  var choreObj = { id: $(this).data("chore-id") };
+  var choreObj = { id: btn.data("chore-id") };
   if (day === "monday") {
     choreObj.monday = updatedStatus;
   }
@@ -190,7 +190,10 @@ $signBtn.on("click", signupSubmit);
 $btnAdd.on("click", kidSignup);
 $addaKid.on("click", gotoPage);
 $logout.on("click", logoutUser);
-$btnChoreStatus.on("click", choreStatus);
+$btnChoreStatus.on("click", function() {
+  var btn = $(this);
+  choreStatus(btn);
+});
 $btnChoreAdd.on("click", choreAdd);
 $kidBtn.on("click", function() {
   var btn = $(this);
