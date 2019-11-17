@@ -59,12 +59,10 @@ module.exports = function(app) {
     res.render("kidsSignUp", { FamilyId: req.user.FamilyId });
   });
 
-  app.get("/parentschore", isAuthenticated, function(req, res) {
-    console.log(req);
-    db.Chore.findAll({ where: { UserId: Number(req.query.UserId) } })
+  app.get("/parentschore/:id", isAuthenticated, function(req, res) {
+    db.Chore.findAll({ where: { UserId: Number(req.params.id) } })
       .then(function(dbRes) {
-        console.log(dbRes);
-        res.render("parentschore", { chores: dbRes, UserId: req.body.id });
+        res.render("parentschore", { chores: dbRes, UserId: req.params.id });
       })
       .catch(function(err) {
         console.log(err);

@@ -175,7 +175,7 @@ module.exports = function(app) {
       })
       .catch(function(err) {
         console.log(err);
-        res.status(400).json({ message: "Task already exists." });
+        res.status(500).json({ message: "Unable to add task." });
       });
   });
 
