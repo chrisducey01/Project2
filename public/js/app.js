@@ -5,7 +5,7 @@ var $addaKid = $("#addaKid");
 var $logout = $("#logout");
 var $btnChoreAdd = $("#button-addon2");
 var $btnChoreStatus = $(".chore-status");
-//var $btnChoreDelete = $("#btnChoreDelete");
+var $btnChoreDelete = $(".btnChoreDelete");
 var $kidBtn = $(".kidBtn");
 
 var API = {
@@ -52,6 +52,13 @@ var API = {
   },
   viewKid: function(data) {
     window.location.href = "/parentschore/" + data.childId;
+  },
+  deleteChore: function(data) {
+    return $.ajax({
+      method: "DELETE",
+      url: "/api/chore",
+      data: data
+    });
   }
 };
 
@@ -186,11 +193,29 @@ var viewChores = function(btn) {
   API.viewKid(kidsData);
 };
 
+var deleteChore = function(btn) {
+  var choreData = {
+    id: btn.data("chore-id")
+  };
+  API.deleteChore(choreData)
+    .then(function(res) {
+      console.log(res);
+      location.reload();
+    })
+    .catch(function(err) {
+      console.log(err);
+    });
+};
+
 $loginBtn.on("click", loginSubmit);
 $signBtn.on("click", signupSubmit);
 $btnAdd.on("click", kidSignup);
 $addaKid.on("click", gotoPage);
 $logout.on("click", logoutUser);
+$btnChoreDelete.on("click", function() {
+  var btn = $(this);
+  deleteChore(btn);
+});
 $btnChoreStatus.on("click", function() {
   var btn = $(this);
   choreStatus(btn);

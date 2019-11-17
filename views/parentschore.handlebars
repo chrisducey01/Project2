@@ -34,8 +34,8 @@
         {{#each chores}}
         <div class="row">
 
-            <div class="col-sm-2 white" id="chore-{{this.id}}">{{this.task}}<button class="btn btn-dark"
-                    id="btnChoreDelete" type="submit">Delete</button></div>
+            <div class="col-sm-2 white" id="chore-{{this.id}}">{{this.task}}<button class="btn btn-dark btnChoreDelete"
+                    data-chore-id="{{this.id}}" type="submit">Delete</button></div>
 
             <div class="col-sm-2 white">
 
