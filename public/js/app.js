@@ -50,10 +50,12 @@ var API = {
       data: choreObj
     });
   },
-  viewKid: function() {
+  viewKid: function(data) {
+    console.log(data);
     return $.ajax({
       method: "GET",
-      url: "/parentschore"
+      url: "/parentschore",
+      data: { UserId: data.childId }
     });
   }
 };
@@ -162,10 +164,7 @@ var choreStatus = function() {
   if (day === "friday") {
     choreObj.friday = updatedStatus;
   }
-  API.choreStat(choreObj).then(function(resp) {
-    console.log(resp);
-  });
-  console.log(choreObj);
+  API.choreStat(choreObj);
 };
 
 var choreAdd = function(event) {
@@ -186,11 +185,9 @@ var choreAdd = function(event) {
 
 var viewChores = function() {
   var kidsData = {
-    childId: $("#kidBtn").data("child-id")
+    childId: $(".kidBtn").data("child-id")
   };
-  API.viewKid(kidsData).then(function() {
-    window.location.href = "/parentschore";
-  });
+  API.viewKid(kidsData);
 };
 
 $loginBtn.on("click", loginSubmit);

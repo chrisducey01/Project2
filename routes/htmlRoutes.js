@@ -1,7 +1,7 @@
 // Requiring our custom middleware for checking if a user is logged in
 var isAuthenticated = require("../config/middleware/isAuthenticated");
 var db = require("../models");
-var Sequelize = require('sequelize');
+var Sequelize = require("sequelize");
 var Op = Sequelize.Op;
 
 module.exports = function(app) {
@@ -29,8 +29,7 @@ module.exports = function(app) {
   app.get("/parents", isAuthenticated, function(req, res) {
     // Find all the kids related to that parent to display on the page
     db.User.findAll({
-      where: { FamilyId: req.user.FamilyId,
-        id: { [Op.ne]: req.user.id } }
+      where: { FamilyId: req.user.FamilyId, id: { [Op.ne]: req.user.id } }
     })
       .then(function(dbUsers) {
         console.log(dbUsers);
@@ -52,7 +51,7 @@ module.exports = function(app) {
       })
       .catch(function(err) {
         console.log(err);
-        console.log("Error getting data from database");
+        res.status(500).json({ message: "Error getting data from database" });
       });
   });
 
@@ -61,7 +60,16 @@ module.exports = function(app) {
   });
 
   app.get("/parentschore", isAuthenticated, function(req, res) {
-    res.render("parentschore", { FamilyId: req.user.FamilyId });
+    console.log(req);
+    db.Chore.findAll({ where: { UserId: Number(req.query.UserId) } })
+      .then(function(dbRes) {
+        console.log(dbRes);
+        res.render("parentschore", { chores: dbRes, UserId: req.body.id });
+      })
+      .catch(function(err) {
+        console.log(err);
+        res.status(500).json({ message: "Error getting data from database" });
+      });
   });
 
   // Redirect to login page
