@@ -164,17 +164,18 @@ var choreStatus = function(btn) {
 
 var choreAdd = function(event) {
   event.preventDefault();
+  var userid = $("#button-addon2").data("user-id");
   var choreData = {
     task: $("#task-input")
       .val()
       .trim(),
-    UserId: $("#button-addon2").data("userid"),
+    UserId: userid,
     description: " ",
     difficultyRating: 1
   };
   API.addChore(choreData).then(function() {
     $("#task-input").val("");
-    window.location.href = "/parentschore";
+    window.location.href = "/parentschore/" + userid;
   });
 };
 
