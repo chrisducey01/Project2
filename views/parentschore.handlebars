@@ -29,189 +29,71 @@
                 <div class="col-sm-2 top" div id="thursday">THURSDAY</div>
                 <div class="col-sm-2 top" div id="friday">FRIDAY</div>
             </div>
-            <!-- Bed -->
-          
-            <!-- clothes -->
-            <div class="row" div id="clothesPicked">
-                <div class="col-sm-2 white">Clothes Picked Up <br><button class="btn btn-dark" id="btnChoreDelete" type="submit">Delete</button></div>
-                <div class="col-sm-2 white">
-                    <form>
-                        <input type="checkbox" id="chmonday" name="chmonday" value="Monday">
-                        </form> 
-                </div>
-                <div class="col-sm-2 white">
-                    <form>
-                        <input type="checkbox" id="chtuesday" name="chtuesday" value="Tuesday">
-                        </form> 
-                </div>
-                <div class="col-sm-2 white">
-                    <form>
-                        <input type="checkbox" id="chwednesday" name="chwednesday" value="Wednesday">
-                        </form> 
-                </div>
-                <div class="col-sm-2 white">
-                    <form>
-                        <input type="checkbox" id="chthursday" name="chthursday" value="Thursday">
-                        </form> 
-                </div>
-                <div class="col-sm-2 white">
-                    <form>
-                        <input type="checkbox" id="chfriday" name="chfriday" value="Friday">
-                        </form> 
-                </div>
+            
+
+ {{#each chores}}
+        <div class="row">
+            
+            <div class="col-sm-2 white" id="chore-{{this.id}}">{{this.task}}<button class="btn btn-dark" id="btnChoreDelete" type="submit">Delete</button></div>
+            
+            <div class="col-sm-2 white">
+                
+                <form>
+                    <input type="checkbox" class="chore-status" data-day="monday" data-chore-id="{{this.id}}" data-user-id="{{this.UserId}}"
+                    {{#if this.monday}}
+                    data-state="checked" checked>
+                    {{else}}
+                    data-state="unchecked">
+                    {{/if}}
+                </form>
+                
             </div>
             <div class="col-sm-2 white">
                 <form>
-                    <input type="checkbox" id="chmonday" name="chmonday" value="Monday">
+                    <input type="checkbox" class="chore-status" data-day="tuesday" data-chore-id="{{this.id}}" data-user-id="{{this.UserId}}"
+                    {{#if this.tuesday}}
+                    data-state="checked" checked>
+                    {{else}}
+                    data-state="unchecked">
+                    {{/if}}
                 </form>
             </div>
             <div class="col-sm-2 white">
                 <form>
-                    <input type="checkbox" id="chtuesday" name="chtuesday" value="Tuesday">
+                    <input type="checkbox" class="chore-status" data-day="wednesday" data-chore-id="{{this.id}}" data-user-id="{{this.UserId}}"
+                    {{#if this.wednesday}}
+                    data-state="checked" checked>
+                    {{else}}
+                    data-state="unchecked">
+                    {{/if}}
                 </form>
             </div>
             <div class="col-sm-2 white">
                 <form>
-                    <input type="checkbox" id="chwednesday" name="chwednesday" value="Wednesday">
+                    <input type="checkbox" class="chore-status" data-day="thursday" data-chore-id="{{this.id}}" data-user-id="{{this.UserId}}"
+                    {{#if this.thursday}}
+                    data-state="checked" checked>
+                    {{else}}
+                    data-state="unchecked">
+                    {{/if}}
                 </form>
             </div>
             <div class="col-sm-2 white">
                 <form>
-                    <input type="checkbox" id="chthursday" name="chthursday" value="Thursday">
-                </form>
-            </div>
-            <div class="col-sm-2 white">
-                <form>
-                    <input type="checkbox" id="chfriday" name="chfriday" value="Friday">
-                </form>
-            </div>
-        </div>
-        <!-- pets fed -->
-        <div class="row" div id="petsFed">
-            <div class="col-sm-2 white">Feed Pets<br><button class="btn btn-dark" type="submit">Delete</button></div>
-            <div class="col-sm-2 white">
-                <form>
-                    <input type="checkbox" id="chmonday" name="chmonday" value="Monday">
-                </form>
-            </div>
-            <div class="col-sm-2 white">
-                <form>
-                    <input type="checkbox" id="chtuesday" name="chtuesday" value="Tuesday">
-                </form>
-            </div>
-            <div class="col-sm-2 white">
-                <form>
-                    <input type="checkbox" id="chwednesday" name="chwednesday" value="Wednesday">
-                </form>
-            </div>
-            <div class="col-sm-2 white">
-                <form>
-                    <input type="checkbox" id="chthursday" name="chthursday" value="Thursday">
-                </form>
-            </div>
-            <div class="col-sm-2 white">
-                <form>
-                    <input type="checkbox" id="chfriday" name="chfriday" value="Friday">
+                    <input type="checkbox" class="chore-status" data-day="friday" data-chore-id="{{this.id}}" data-user-id="{{this.UserId}}"
+                    {{#if this.friday}}
+                    data-state="checked" checked>
+                    {{else}}
+                    data-state="unchecked">
+                    {{/if}}
                 </form>
             </div>
         </div>
-        <!-- water plants -->
-        <div class="row" div id="plantsWatered">
-            <div class="col-sm-2 white">Water Plants<br><button class="btn btn-dark" type="submit">Delete</button></div>
-            <div class="col-sm-2 white">
-                <form>
-                    <input type="checkbox" id="chmonday" name="chmonday" value="Monday">
-                </form>
-            </div>
-            <div class="col-sm-2 white">
-                <form>
-                    <input type="checkbox" id="chtuesday" name="chtuesday" value="Tuesday">
-                </form>
-            </div>
-            <div class="col-sm-2 white">
-                <form>
-                    <input type="checkbox" id="chwednesday" name="chwednesday" value="Wednesday">
-                </form>
-            </div>
-            <div class="col-sm-2 white">
-                <form>
-                    <input type="checkbox" id="chthursday" name="chthursday" value="Thursday">
-                </form>
-            </div>
-            <div class="col-sm-2 white">
-                <form>
-                    <input type="checkbox" id="chfriday" name="chfriday" value="Friday">
-                </form>
-            </div>
-        </div>
-        <!-- do dishes -->
-        <div class="row" div id="days">
-            <div class="col-sm-2 white">Dishes <br><button class="btn btn-dark" type="submit">Delete</button></div>
-            <div class="col-sm-2 white">
-                <form>
-                    <input type="checkbox" id="chmonday" name="chmonday" value="Monday">
-                </form>
-            </div>
-            <div class="col-sm-2 white">
-                <form>
-                    <input type="checkbox" id="chtuesday" name="chtuesday" value="Tuesday">
-                </form>
-            </div>
-            <div class="col-sm-2 white">
-                <form>
-                    <input type="checkbox" id="chwednesday" name="chwednesday" value="Wednesday">
-                </form>
-            </div>
-            <div class="col-sm-2 white">
-                <form>
-                    <input type="checkbox" id="chthursday" name="chthursday" value="Thursday">
-                </form>
-            </div>
-            <div class="col-sm-2 white">
-                <form>
-                    <input type="checkbox" id="chfriday" name="chfriday" value="Friday">
-                </form>
-            </div>
-        </div>
-        <!-- fold clothes -->
-        <div class="row" div id="days">
-            <div class="col-sm-2 white">Fold Clothes <br><button class="btn btn-dark" type="submit">Delete</button>
-            </div>
-            <br>
-            <div class="col-sm-2 white">
-                <form>
-                    <input type="checkbox" id="chmonday" name="chmonday" value="Monday">
-                </form>
-            </div>
-            <div class="col-sm-2 white">
-                <form>
-                    <input type="checkbox" id="chtuesday" name="chtuesday" value="Tuesday">
-                </form>
-            </div>
-            <div class="col-sm-2 white">
-                <form>
-                    <input type="checkbox" id="chwednesday" name="chwednesday" value="Wednesday">
-                </form>
-            </div>
-            <div class="col-sm-2 white">
-                <form>
-                    <input type="checkbox" id="chthursday" name="chthursday" value="Thursday">
-                </form>
-            </div>
-            <div class="col-sm-2 white">
-                <form>
-                    <input type="checkbox" id="chfriday" name="chfriday" value="Friday">
-                </form>
-            </div>
-            <br>
-            <br>
-            <div class="input-group mb-3">
+        {{/each}}
+        <div class="input-group mb-3">
                 <input type="text" class="form-control" id="task-input" placeholder="Add a chore here" aria-label="Recipient's username"
                     aria-describedby="button-addon2">
                 <div class="input-group-append">
                     <button class="btn btn-dark" type="button" id="button-addon2">Add</button>
                 </div>
             </div>
-        </div>
-    </div>
-</div>

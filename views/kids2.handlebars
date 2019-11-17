@@ -32,8 +32,11 @@
 
         {{#each chores}}
         <div class="row">
+            
             <div class="col-sm-2 white" id="chore-{{this.id}}">{{this.task}}</div>
+            
             <div class="col-sm-2 white">
+                
                 <form>
                     <input type="checkbox" class="chore-status" data-day="monday" data-chore-id="{{this.id}}" data-user-id="{{this.UserId}}"
                     {{#if this.monday}}
@@ -42,6 +45,7 @@
                     data-state="unchecked">
                     {{/if}}
                 </form>
+                
             </div>
             <div class="col-sm-2 white">
                 <form>
@@ -85,5 +89,6 @@
             </div>
         </div>
         {{/each}}
+        
     </div>
 </div>
