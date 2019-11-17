@@ -1,10 +1,12 @@
 var $loginBtn = $("#loginBtn");
 var $signBtn = $("#signBtn");
 var $btnAdd = $("#btnAdd");
-var $btnChoreAdd = $("#button-addon2");
-var $btnChoreDelete = $("#btnChoreDelete");
 var $addaKid = $("#addaKid");
 var $logout = $("#logout");
+var $btnChoreAdd = $("#button-addon2");
+var $btnChoreStatus = $(".chore-status");
+//var $btnChoreDelete = $("#btnChoreDelete");
+var $kidBtn = $(".kidBtn");
 
 var API = {
   getLogin: function(data) {
@@ -32,6 +34,26 @@ var API = {
     return $.ajax({
       url: "/api/logout",
       type: "GET"
+    });
+  },
+  addChore: function(data) {
+    return $.ajax({
+      url: "/api/chore",
+      method: "POST",
+      data: data
+    });
+  },
+  choreStat: function() {
+    return $.ajax({
+      method: "PUT",
+      url: "/api/chore",
+      data: choreObj
+    });
+  },
+  viewKid: function() {
+    return $.ajax({
+      method: "GET",
+      url: "/parentschore"
     });
   }
 };
@@ -101,20 +123,6 @@ var kidSignup = function(event) {
   });
 };
 
-var choreAdd = function(event) {
-  event.preventDefault();
-  var choreData = {
-    username: $("#task-input")
-      .val()
-      .trim(),
-    UserId: $("#button-addon2").data("userid")
-  };
-  API.addChore(choreData).then(function() {
-    $("#task-input").val("");
-    window.location.href = "/parentschore";
-  });
-};
-
 var gotoPage = function() {
   window.location.href = "/kidsSignUp";
 };
@@ -125,15 +133,7 @@ var logoutUser = function() {
   });
 };
 
-$loginBtn.on("click", loginSubmit);
-$signBtn.on("click", signupSubmit);
-$btnAdd.on("click", kidSignup);
-$addaKid.on("click", gotoPage);
-$logout.on("click", logoutUser);
-$btnChoreAdd.on("click", choreAdd);
-
-// Update chore status based on which day and chore was clicked
-$(".chore-status").click(function() {
+var choreStatus = function() {
   var day = $(this).data("day");
   var state = $(this).data("state");
   var updatedStatus;
@@ -162,14 +162,42 @@ $(".chore-status").click(function() {
   if (day === "friday") {
     choreObj.friday = updatedStatus;
   }
-
-  $.ajax({
-    method: "PUT",
-    url: "/api/chore",
-    data: choreObj
-  }).then(function(resp) {
+  API.choreStat(choreObj).then(function(resp) {
     console.log(resp);
   });
-
   console.log(choreObj);
-});
+};
+
+var choreAdd = function(event) {
+  event.preventDefault();
+  var choreData = {
+    task: $("#task-input")
+      .val()
+      .trim(),
+    UserId: $("#button-addon2").data("userid"),
+    description: " ",
+    difficultyRating: 1
+  };
+  API.addChore(choreData).then(function() {
+    $("#task-input").val("");
+    window.location.href = "/parentschore";
+  });
+};
+
+var viewChores = function() {
+  var kidsData = {
+    childId: $("#kidBtn").data("child-id")
+  };
+  API.viewKid(kidsData).then(function() {
+    window.location.href = "/parentschore";
+  });
+};
+
+$loginBtn.on("click", loginSubmit);
+$signBtn.on("click", signupSubmit);
+$btnAdd.on("click", kidSignup);
+$addaKid.on("click", gotoPage);
+$logout.on("click", logoutUser);
+$btnChoreStatus.on("click", choreStatus);
+$btnChoreAdd.on("click", choreAdd);
+$kidBtn.on("click", viewChores);
