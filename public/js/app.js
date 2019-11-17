@@ -51,12 +51,7 @@ var API = {
     });
   },
   viewKid: function(data) {
-    console.log(data);
-    return $.ajax({
-      method: "GET",
-      url: "/parentschore",
-      data: { UserId: data.childId }
-    });
+    window.location.href = "/parentschore/" + data.childId;
   }
 };
 
@@ -183,9 +178,9 @@ var choreAdd = function(event) {
   });
 };
 
-var viewChores = function() {
+var viewChores = function(btn) {
   var kidsData = {
-    childId: $(".kidBtn").data("child-id")
+    childId: btn.data("child-id")
   };
   API.viewKid(kidsData);
 };
@@ -197,4 +192,7 @@ $addaKid.on("click", gotoPage);
 $logout.on("click", logoutUser);
 $btnChoreStatus.on("click", choreStatus);
 $btnChoreAdd.on("click", choreAdd);
-$kidBtn.on("click", viewChores);
+$kidBtn.on("click", function() {
+  var btn = $(this);
+  viewChores(btn);
+});
