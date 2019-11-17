@@ -6,63 +6,52 @@
                 <!-- Logo -->
                 <a href="#" class="navbar-brand" id="logo"><img src="../../public/styles/images/kidMyChores.png"></a>
 
-                    <!-- Navbar -->
-                    <button class="navbar-toggler navbar-toggler-right" type="button"> 
-                    </button>
-                    <button type="button" class="btn btn-link">Back</button>
-                    <button type="button" id="logout" class="btn btn-link">Log out</button>
-                </nav>
-            </div>
+                <!-- Navbar -->
+                <button class="navbar-toggler navbar-toggler-right" type="button">
+                </button>
+                <button type="button" class="btn btn-link">Back</button>
+                <button type="button" id="logout" class="btn btn-link">Log out</button>
+            </nav>
         </div>
     </div>
+</div>
 </div>
 <!-- Calendar -->
 <div class="feature-wrapper">
     <div class="container">
 
-            <!-- Weekdays -->
-            <div class="row" div id="days">
-                <div class="col-sm-2 top" div id="chore">CHORES</div>
-                <div class="col-sm-2 top" div id="monday">MONDAY</div>
-                <div class="col-sm-2 top" div id="tuesday">TUESDAY</div>
-                <div class="col-sm-2 top" div id="wednesday">WEDNESDAY</div>
-                <div class="col-sm-2 top" div id="thursday">THURSDAY</div>
-                <div class="col-sm-2 top" div id="friday">FRIDAY</div>
-            </div>
-            
+        <!-- Weekdays -->
+        <div class="row" div id="days">
+            <div class="col-sm-2 top" div id="chore">CHORES</div>
+            <div class="col-sm-2 top" div id="monday">MONDAY</div>
+            <div class="col-sm-2 top" div id="tuesday">TUESDAY</div>
+            <div class="col-sm-2 top" div id="wednesday">WEDNESDAY</div>
+            <div class="col-sm-2 top" div id="thursday">THURSDAY</div>
+            <div class="col-sm-2 top" div id="friday">FRIDAY</div>
+        </div>
 
- {{#each chores}}
+
+        {{#each chores}}
         <div class="row">
-            
-            <div class="col-sm-2 white" id="chore-{{this.id}}">{{this.task}}<button class="btn btn-dark" id="btnChoreDelete" type="submit">Delete</button></div>
-            
+
+            <div class="col-sm-2 white" id="chore-{{this.id}}">{{this.task}}<button class="btn btn-dark"
+                    id="btnChoreDelete" type="submit">Delete</button></div>
+
             <div class="col-sm-2 white">
-                
+
                 <form>
-                    <input type="checkbox" class="chore-status" data-day="monday" data-chore-id="{{this.id}}" data-user-id="{{this.UserId}}"
-                    {{#if this.monday}}
-                    data-state="checked" checked>
+                    <input type="checkbox" class="chore-status" data-day="monday" data-chore-id="{{this.id}}"
+                        data-user-id="{{this.UserId}}" {{#if this.monday}} data-state="checked" checked>
                     {{else}}
                     data-state="unchecked">
                     {{/if}}
                 </form>
-                
+
             </div>
             <div class="col-sm-2 white">
                 <form>
-                    <input type="checkbox" class="chore-status" data-day="tuesday" data-chore-id="{{this.id}}" data-user-id="{{this.UserId}}"
-                    {{#if this.tuesday}}
-                    data-state="checked" checked>
-                    {{else}}
-                    data-state="unchecked">
-                    {{/if}}
-                </form>
-            </div>
-            <div class="col-sm-2 white">
-                <form>
-                    <input type="checkbox" class="chore-status" data-day="wednesday" data-chore-id="{{this.id}}" data-user-id="{{this.UserId}}"
-                    {{#if this.wednesday}}
-                    data-state="checked" checked>
+                    <input type="checkbox" class="chore-status" data-day="tuesday" data-chore-id="{{this.id}}"
+                        data-user-id="{{this.UserId}}" {{#if this.tuesday}} data-state="checked" checked>
                     {{else}}
                     data-state="unchecked">
                     {{/if}}
@@ -70,9 +59,8 @@
             </div>
             <div class="col-sm-2 white">
                 <form>
-                    <input type="checkbox" class="chore-status" data-day="thursday" data-chore-id="{{this.id}}" data-user-id="{{this.UserId}}"
-                    {{#if this.thursday}}
-                    data-state="checked" checked>
+                    <input type="checkbox" class="chore-status" data-day="wednesday" data-chore-id="{{this.id}}"
+                        data-user-id="{{this.UserId}}" {{#if this.wednesday}} data-state="checked" checked>
                     {{else}}
                     data-state="unchecked">
                     {{/if}}
@@ -80,9 +68,17 @@
             </div>
             <div class="col-sm-2 white">
                 <form>
-                    <input type="checkbox" class="chore-status" data-day="friday" data-chore-id="{{this.id}}" data-user-id="{{this.UserId}}"
-                    {{#if this.friday}}
-                    data-state="checked" checked>
+                    <input type="checkbox" class="chore-status" data-day="thursday" data-chore-id="{{this.id}}"
+                        data-user-id="{{this.UserId}}" {{#if this.thursday}} data-state="checked" checked>
+                    {{else}}
+                    data-state="unchecked">
+                    {{/if}}
+                </form>
+            </div>
+            <div class="col-sm-2 white">
+                <form>
+                    <input type="checkbox" class="chore-status" data-day="friday" data-chore-id="{{this.id}}"
+                        data-user-id="{{this.UserId}}" {{#if this.friday}} data-state="checked" checked>
                     {{else}}
                     data-state="unchecked">
                     {{/if}}
@@ -91,9 +87,9 @@
         </div>
         {{/each}}
         <div class="input-group mb-3">
-                <input type="text" class="form-control" id="task-input" placeholder="Add a chore here" aria-label="Recipient's username"
-                    aria-describedby="button-addon2">
-                <div class="input-group-append">
-                    <button class="btn btn-dark" type="button" id="button-addon2">Add</button>
-                </div>
+            <input type="text" class="form-control" id="task-input" placeholder="Add a chore here"
+                aria-label="Recipient's username" aria-describedby="button-addon2">
+            <div class="input-group-append">
+                <button class="btn btn-dark" data-user-id="{{UserId}}" type="button" id="button-addon2">Add</button>
             </div>
+        </div>
