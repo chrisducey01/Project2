@@ -4,36 +4,36 @@
     <div class "frame-parents">
       <!------------ section goback logout --------------->
       <div class="row-goback">
-        <div class="col-md-6 col-md-offset-1">
-          <button type="button" id="logout" class="btn btn-link">
-            <h4>Logout</h4>
-          </button>
+        <div class="col-md-12">
+          <nav class="navbar navbar-toggleable-md navbar-inverse">
+            <button type="button" id="logout" class="btn btn-link"><h4>Logout</h4></button>
+              <div class="col-md-7 col-md-offset-4"><img src="styles/images/logomain.png">
+              </div>
+          </nav>
         </div>
       </div>
       <!------------ section logo --------------->
       <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-          <img src="styles/images/logomain.png">
-        </div>
+        <div class="col-md-7 col-md-offset-3">
+          <h4>As a parent, you can add your kids and then select them and assign chores they need to complete</h4>
       </div>
     </div>
   </div>
   <!------------ section add-select --------------->
   <div class="row-select">
-    <div class="col-md-3 col-md-offset-2" div id="left">
-      <h2>Select a Kid </h2>
-      <h6>Make a selection to manage their account</h6>
+    <div class="col-md-3 col-md-offset-3" div id="left">
       {{#each kids}}
       <h6>{{name}}</h6>
-      <button class="kidBtn" id= "kidBtn" class="btn btn-dark" data-child-id="{{this.id}}"><img src="styles/images/cryingface.png"
-          height="120px" width="120px"></button>
+      <h2>Select a Kid </h2>
+      <h6>Make a selection to manage their account</h6>
+      <button class="kidBtn" id="kidBtn" class="btn btn-dark" data-child-id="{{this.id}}"><img
+          src="styles/images/cryingface.png" height="120px" width="120px"></button>
     </div>
     <!------------ section add-select --------------->
     <div class="col-md-3 col-md" div id="right">
+      {{/each}}
       <h2> Add a kid</h2>
       <h6>Create a login for each kid</h6>
-      {{/each}}
-      <h6>ADD KID</h6>
       <button id="addaKid" href="/kidSignUp" class="btn btn-dark"><img src="styles/images/add-logo.png" height="120px"
           width="120px"></button>
     </div>

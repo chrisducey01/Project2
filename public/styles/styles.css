@@ -1,168 +1,176 @@
-/* -- Font styles -- */
-
-h1 {
-    font-family: 'Big Shoulders Text', cursive;
-    font-size: 74px;
-}
-
-h2. {
-    font-family: 'Big Shoulders Text', cursive;
-    font-size: 40px;
-}
-
-h3 {
-    font-family: 'Big Shoulders Text', cursive;
-    font-size: 25px;
-}
-
-h4 {
-    font-family: 'Big Shoulders Text', cursive;
-    font-size: 25px;
-}
-
-h6 {
-    font-family: 'Big Shoulders Text', cursive;
-    font-size: 18px;
-}
-
-p {
-    font-family: 'Big Shoulders Text', cursive;
-    font-size: 25px;
-}
-
-
-/* -- zarits fonts --*/
-
-h5 {
-    font-size: 50px;
-    color: darkblue;
-}
-
-p,
-div {
-    font-family: 'Big Shoulders Text', cursive;
-    font-size: 35px;
-}
-
-
-/* ----------------------------- signup style ------------------------------- */
-
-.container {
-    background: url(../styles/images/o-BOYS-CHORES-facebook.jpg);
-    background-position: top left;
-    height: 100vh;
-}
-
-#main-logo {
-    position: absolute;
-    top: 30px;
-}
-
-
-/* ----------------------------- select or add kid style ------------------------------- */
-
-.section-parents {
-    scroll-behavior: smooth;
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-    margin: auto;
-    font-family: 'Big Shoulders Text', cursive;
-    color: #ffff;
-    background: linear-gradient(90deg, #ff8c8c, #ff9bbe, rgb(179, 161, 253), #7de7ff);
-    background: transparent(50%);
-    background-size: cover;
-    background-repeat: no-repeat;
-}
-
-.col-md-6.col-md-offset-1 {
-    background: transparent;
-    padding: 5px;
-}
-
-.row-goback {
-    background: transparent;
-}
-
-#left {
-    background-color: #c8d6e5;
-    height: 300px;
-    width: 400px;
-    border-radius: 25px;
-    position: relative;
-    top: 40px;
-    text-align: center;
-}
-
-#right {
-    background-color: #8395a7;
-    height: 300px;
-    width: 400px;
-    border-radius: 25px;
-    position: relative;
-    top: 40px;
-    text-align: center;
-}
-
-#addaKid {
-    background-color: transparent;
-}
-
-#kidBtn {
-    background-color: transparent;
-}
-
-
-/* ----------------------------- Zarit style ------------------------------- */
-
-body {
-    background: url(../styles/images/corkbackground.jpeg);
-}
-
-nav {
-    color: cadetblue;
-}
-
-.container8 {
-    background-color: beige;
-    padding-top: 5%;
-    padding-bottom: 5%;
-    padding-left: 5%;
-    padding-right: 5%;
-}
-
-.module {
-    background-color: beige;
-}
-
-.feature-wrapper8 {
-    background-color: blueviolet;
-}
-
-.container {
-    background: url(../styles/images/o-BOYS-CHORES-facebook.jpg);
-    background-position: top left;
-    height: 100vh;
-    background-size: cover;
-    background-size: 100%;
-    background-repeat: no-repeat;
-}
-
-.feature-wrapper6 {
-    background: url(../styles/images/corkbackground.jpeg);
-}
-
-#main-logo {
-    position: absolute;
-    top: 30px;
-}
-
-input[type=checkbox] {
-    display: inline-block;
-    width: 3em;
-    height: 3em;
-}
-
-section {
-    background-color: beige;
-}
+    /* -- Font styles -- */
+    
+    h1 {
+        font-family: 'Big Shoulders Text', cursive;
+        font-size: 74px;
+    }
+    
+    h2. {
+        font-family: 'Big Shoulders Text', cursive;
+        font-size: 40px;
+    }
+    
+    h3 {
+        font-family: 'Big Shoulders Text', cursive;
+        font-size: 20px;
+    }
+    
+    h4 {
+        font-family: 'Big Shoulders Text', cursive;
+        font-size: 25px;
+    }
+    
+    h6 {
+        font-family: 'Big Shoulders Text', cursive;
+        font-size: 18px;
+    }
+    
+    p {
+        font-family: 'Big Shoulders Text', cursive;
+        font-size: 25px;
+    }
+    /* -- zarits fonts --*/
+    
+    h5 {
+        font-size: 50px;
+        color: darkblue;
+    }
+    
+    p,
+    div {
+        font-family: 'Big Shoulders Text', cursive;
+        font-size: 35px;
+    }
+    /* ----------------------------- signup style ------------------------------- */
+    
+    .container {
+        background: url(../styles/images/o-BOYS-CHORES-facebook.jpg);
+        background-position: top left;
+        height: 100vh;
+    }
+    
+    #main-logo {
+        position: absolute;
+        top: 30px;
+    }
+    /* ----------------------------- select or add kid style ------------------------------- */
+    
+    .col-md-12 {
+        background-color: bisque;
+        height: 160px;
+    }
+    
+    .col-md-7.col-md-offset-3 {
+        background-color: #FEA47F;
+        padding: 5px;
+    }
+    
+    .navbar-inverse {
+        background-color: transparent;
+        border-color: transparent;
+    }
+    
+    .section-parents {
+        scroll-behavior: smooth;
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+        margin: auto;
+        font-family: 'Big Shoulders Text', cursive;
+        color: #ffff;
+        background: url(../styles/images/corkbackground.jpeg);
+        background: transparent(50%);
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+    
+    .col-md-6.col-md-offset-1 {
+        background: transparent;
+        padding: 5px;
+    }
+    
+    .row-goback {
+        background: transparent;
+    }
+    
+    #left {
+        background-color: #f7d794;
+        height: 300px;
+        width: 400px;
+        border-radius: 25px;
+        position: relative;
+        top: 40px;
+        text-align: center;
+    }
+    
+    #right {
+        background-color: #f5cd79;
+        height: 300px;
+        width: 400px;
+        border-radius: 25px;
+        position: relative;
+        top: 40px;
+        text-align: center;
+    }
+    
+    #addaKid {
+        background-color: transparent;
+    }
+    
+    #kidBtn {
+        background-color: transparent;
+    }
+    /* ----------------------------- Parentschore style ------------------------------- */
+    /* ----------------------------- Zarit style ------------------------------- */
+    
+    body {
+        background: url(../styles/images/corkbackground.jpeg);
+    }
+    
+    nav {
+        color: cadetblue;
+    }
+    
+    .container8 {
+        background-color: beige;
+        padding-top: 5%;
+        padding-bottom: 5%;
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+    
+    .module {
+        background-color: beige;
+    }
+    
+    .feature-wrapper8 {
+        background-color: blueviolet;
+    }
+    
+    .container {
+        background: url(../styles/images/o-BOYS-CHORES-facebook.jpg);
+        background-position: top left;
+        height: 100vh;
+        background-size: cover;
+        background-size: 100%;
+        background-repeat: no-repeat;
+    }
+    
+    .feature-wrapper6 {
+        background: url(../styles/images/corkbackground.jpeg);
+    }
+    
+    #main-logo {
+        position: absolute;
+        top: 30px;
+    }
+    
+    input[type=checkbox] {
+        display: inline-block;
+        width: 3em;
+        height: 3em;
+    }
+    
+    section {
+        background-color: beige;
+    }
