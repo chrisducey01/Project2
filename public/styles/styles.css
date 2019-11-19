@@ -35,33 +35,3 @@
         position: absolute;
         top: 30px;
     }
-    
-    .container-scroll {
-        background-color: #d1ccc0;
-        background-position: top center;
-        height: 80vh;
-        width: 992px;
-        margin-left: auto;
-        margin-right: auto;
-        padding-left: 15px;
-        padding-right: 15px;
-    }
-    
-    #left {
-        background-color: red;
-        color: white;
-    }
-    
-    #right {
-        background-color: blue;
-        color: white;
-    }
-    
-    #middle {
-        background-color: peru;
-        color: white;
-    }
-    
-    div {
-        display: block;
-    }
