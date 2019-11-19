@@ -63,6 +63,9 @@
     .col-md-7.col-md-offset-3 {
         background-color: #FEA47F;
         padding: 5px;
+        margin-bottom: 1%;
+        margin-left: 20%;
+        
     }
     
     .navbar-inverse {
@@ -95,18 +98,19 @@
     
     #left {
         background-color: #f7d794;
-        height: 300px;
-        width: 400px;
+        height: 200px;
+        width: 300px;
         border-radius: 25px;
         position: relative;
         top: 40px;
         text-align: center;
+        margin-left: 20%;
     }
     
     #right {
         background-color: #f5cd79;
-        height: 300px;
-        width: 400px;
+        height: 200px;
+        width: 300px;
         border-radius: 25px;
         position: relative;
         top: 40px;
