@@ -7,6 +7,7 @@ var $btnChoreAdd = $("#button-addon2");
 var $btnChoreStatus = $(".chore-status");
 var $btnChoreDelete = $(".btnChoreDelete");
 var $kidBtn = $(".kidBtn");
+var $goBack = $("#back");
 
 var API = {
   getLogin: function(data) {
@@ -224,6 +225,10 @@ var deleteChore = function(btn) {
     });
 };
 
+var goBack = function() {
+  window.location.href = "/parents";
+};
+
 $loginBtn.on("click", loginSubmit);
 $signBtn.on("click", signupSubmit);
 $btnAdd.on("click", kidSignup);
@@ -242,3 +247,4 @@ $kidBtn.on("click", function() {
   var btn = $(this);
   viewChores(btn);
 });
+$goBack.on("click", goBack);
