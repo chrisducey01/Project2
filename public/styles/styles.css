@@ -124,7 +124,7 @@
     /* ----------------------------- Zarit style ------------------------------- */
     
     body {
-        background: url(../styles/images/corkbackground.jpeg);
+        background: url("../styles/images/corkbackground.jpeg");
     }
     
     nav {
@@ -148,14 +148,13 @@
     }
     
     .container {
-        background: url(../styles/images/o-BOYS-CHORES-facebook.jpg);
+        background: url("../styles/images/o-BOYS-CHORES-facebook.jpg");
         background-position: top left;
         height: 100vh;
         background-size: cover;
         background-size: 100%;
         background-repeat: no-repeat;
     }
-    
     .feature-wrapper6 {
         background: url(../styles/images/corkbackground.jpeg);
     }
@@ -164,7 +163,6 @@
         position: absolute;
         top: 30px;
     }
-    
     input[type=checkbox] {
         display: inline-block;
         width: 3em;
