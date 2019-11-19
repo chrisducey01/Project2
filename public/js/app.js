@@ -62,6 +62,15 @@ var API = {
   }
 };
 
+function failedLogin() {
+  let failed = document.getElementById("wrong");
+  if (failed.style.display === "none") {
+    failed.style.display = "block";
+  } else {
+    failed.style.display = "none";
+  }
+}
+
 var signupSubmit = function(event) {
   event.preventDefault();
   var signupData = {
@@ -86,6 +95,7 @@ var signupSubmit = function(event) {
 
 var loginSubmit = function(event) {
   event.preventDefault();
+
   var loginData = {
     username: $("#email-input")
       .val()
@@ -95,17 +105,24 @@ var loginSubmit = function(event) {
       .trim()
   };
   if (!(loginData.username && loginData.password)) {
-    alert("That was the wrong password TINY HUMAN!");
+    failedLogin();
     return;
   }
-
-  API.getLogin(loginData).then(function(data) {
-    if (data.role === "Parent") {
-      window.location.href = "/parents";
-    } else if (data.role === "Child") {
-      window.location.href = "/kids";
+  API.getLogin(loginData).then(
+    function(data) {
+      console.log("hello");
+      if (data.role === "Parent") {
+        window.location.href = "/parents";
+      } else if (data.role === "Child") {
+        window.location.href = "/kids";
+      }
+    },
+    function(e) {
+      console.error(e);
+      failedLogin();
     }
-  });
+  );
+  return;
 };
 
 var kidSignup = function(event) {
