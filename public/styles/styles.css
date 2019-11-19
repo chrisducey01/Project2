@@ -20,7 +20,7 @@ h4 {
     font-size: 25px;
 }
 
-h5 {
+h6 {
     font-family: 'Big Shoulders Text', cursive;
     font-size: 18px;
 }
@@ -28,6 +28,20 @@ h5 {
 p {
     font-family: 'Big Shoulders Text', cursive;
     font-size: 25px;
+}
+
+
+/* -- zarits fonts --*/
+
+h5 {
+    font-size: 50px;
+    color: darkblue;
+}
+
+p,
+div {
+    font-family: 'Big Shoulders Text', cursive;
+    font-size: 35px;
 }
 
 
@@ -88,4 +102,59 @@ p {
     position: relative;
     top: 40px;
     text-align: center;
+}
+
+
+/* ----------------------------- Zarit style ------------------------------- */
+
+body {
+    background: url(../styles/images/corkbackground.jpeg);
+}
+
+nav {
+    color: cadetblue;
+}
+
+.container8 {
+    background-color: beige;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.module {
+    background-color: beige;
+}
+
+.feature-wrapper8 {
+    background-color: blueviolet;
+}
+
+.container {
+    background: url(../styles/images/o-BOYS-CHORES-facebook.jpg);
+    background-position: top left;
+    height: 100vh;
+    background-size: cover;
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+.feature-wrapper6 {
+    background: url(../styles/images/corkbackground.jpeg);
+}
+
+#main-logo {
+    position: absolute;
+    top: 30px;
+}
+
+input[type=checkbox] {
+    display: inline-block;
+    width: 3em;
+    height: 3em;
+}
+
+section {
+    background-color: beige;
 }

@@ -22,18 +22,18 @@
   <div class="row-select">
     <div class="col-md-3 col-md-offset-2" div id="left">
       <h2>Select a Kid </h2>
-      <h5>Make a selection to manage their account</h5>
+      <h6>Make a selection to manage their account</h6>
       {{#each kids}}
-      <h5>{{name}}</h5>
+      <h6>{{name}}</h6>
       <button class="kidBtn" class="btn btn-dark" data-child-id="{{this.id}}"><img src="styles/images/cryingface.png"
           height="120px" width="120px"></button>
     </div>
     <!------------ section add-select --------------->
     <div class="col-md-3 col-md" div id="right">
       <h2> Add a kid</h2>
-      <h5>Create a login for each kid</h5>
+      <h6>Create a login for each kid</h6>
       {{/each}}
-      <h5>ADD KID</h5>
+      <h6>ADD KID</h6>
       <button id="addaKid" href="/kidSignUp" class="btn btn-dark"><img src="styles/images/addperson.png" height="120px"
           width="120px"></button>
     </div>
