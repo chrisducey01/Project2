@@ -35,3 +35,11 @@
         position: absolute;
         top: 30px;
     }
+    
+    .jumbotron {
+        background: url(../styles/images/cute-family-picture-160994.jpg);
+        background-size: cover;
+        background-position: center center;
+        border: transparent;
+        height: 250px;
+    }
