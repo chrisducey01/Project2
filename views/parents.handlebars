@@ -1,45 +1,46 @@
-<div class="container-parents">
-  <div class="jumbotron">
-  </div>
-</div>
-<div class="container-section">
-  <div class="row">
-    <div class="col-md-6 col-md-offset-4">
-      <img src="styles/images/logomain.png">
-    </div>
-  </div>
-</div>
-
-
-
-<button type="button" class="btn btn-link">Back</button>
-
-<button type="button" id="logout" class="btn btn-link">Log out</button>
-
-
-
-
-<section class="section-about">
-  <div class="container-about">
-    <div class="columns-is-centered">
-      <div class="column-select">
-        <div class="module-border-wrap">
-          <div class="module">
-            {{#each kids}}
-            <div class="col-sm-6 select">
-              <h5>{{name}}</h5>
-              <button class="kidBtn" class="btn btn-dark" data-child-id="{{this.id}}"><img
-                  src="styles/images/cryingface.png" height="120px" width="120px"></button>
-            </div>
-            {{/each}}
-            <div class="col-sm-6 add">
-              <h5>ADD KID</h5>
-              <button id="addaKid" href="/kidSignUp" class="btn btn-dark"><img
-                  src="https://svgsilh.com/svg_v2/1970474.svg" height="120px" width="120px"></button>
-            </div>
-          </div>
+<!------------ section parents --------------->
+<section class="section-parents">
+  <div class="container-parents">
+    <div class "frame-parents">
+      <!------------ section goback logout --------------->
+      <div class="row-goback">
+        <div class="col-md-6 col-md-offset-1">
+          <button type="button" id="logout" class="btn btn-link">
+            <h4>Logout</h4>
+          </button>
+        </div>
+      </div>
+      <!------------ section logo --------------->
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+          <img src="styles/images/logomain.png">
         </div>
       </div>
     </div>
+  </div>
+  <!------------ section add-select --------------->
+  <div class="row-select">
+    <div class="col-md-3 col-md-offset-2" div id="left">
+      <h2>Select a Kid </h2>
+      <h5>Make a selection to manage their account</h5>
+      {{#each kids}}
+      <h5>{{name}}</h5>
+      <button class="kidBtn" class="btn btn-dark" data-child-id="{{this.id}}"><img src="styles/images/cryingface.png"
+          height="120px" width="120px"></button>
+    </div>
+    <!------------ section add-select --------------->
+    <div class="col-md-3 col-md" div id="right">
+      <h2> Add a kid</h2>
+      <h5>Create a login for each kid</h5>
+      {{/each}}
+      <h5>ADD KID</h5>
+      <button id="addaKid" href="/kidSignUp" class="btn btn-dark"><img src="styles/images/addperson.png" height="120px"
+          width="120px"></button>
+    </div>
+  </div>
+
+  </div>
+  </div>
+  </div>
   </div>
 </section>
