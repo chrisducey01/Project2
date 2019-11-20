@@ -1,7 +1,11 @@
 {
   "development": {
     "username": "root",
+<<<<<<< HEAD
     "password": "loveofcode",
+=======
+    "password": "root",
+>>>>>>> ae2a5663dfca1d5395e44bebf7c9dc4470ab1b3f
     "database": "chrackerdb",
     "host": "localhost",
     "dialect": "mysql"
